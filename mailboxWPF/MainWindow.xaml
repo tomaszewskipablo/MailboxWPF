@@ -66,6 +66,166 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>
+
+            <ListView Grid.Row="2" Name="listView" Margin="15,0,15,204.4" Grid.RowSpan="2">
+                <ListViewItem>Project replacemnt</ListViewItem>
+                <ListViewItem>de</ListViewItem>
+                <ListViewItem>iks</ListViewItem>
+                <ListViewItem>de</ListViewItem>
+                <ListViewItem>iks</ListViewItem>
+                <ListViewItem>de</ListViewItem>
+                <ListViewItem>iksasasadsadsadsadss</ListViewItem>
+                <ListViewItem>de</ListViewItem>
+                <ListViewItem>iks</ListViewItem>
+                <ListViewItem>de</ListViewItem>
+                <ListViewItem>iks</ListViewItem>
+                <ListViewItem>de</ListViewItem>
+
+            </ListView>
+
+            <StackPanel Grid.Row="2"  Grid.Column="1">
+                <TreeView  Name="treeView1" >
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="resources/outlook.png" Width="24"></Image>
+                                <Label Content="pablo552@gmail.com" FontFamily="Segoe UI Emoji"></Label>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+
+                        <!-- Child Items -->
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/inbox.png" Width="20"></Image>
+                                    <Label Content="Inbox (19)"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/pending.png" Width="20"></Image>
+                                    <Label Content="Sent"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/important.png" Width="20"></Image>
+                                    <Label Content="Important"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/ads.png"  Width="20"></Image>
+                                    <Label Content="Spam"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                    </TreeViewItem>
+                </TreeView>
+
+                <!-- START OF SECOND MAIL-->
+
+                <TreeView Grid.Row="2"  Grid.Column="1" Name="treeView2" >
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="resources/gmail.png" Width="24"></Image>
+                                <Label Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji"></Label>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+
+                        <!-- Child Items -->
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/inbox.png" Width="20"></Image>
+                                    <Label Content="Inbox (19)"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/pending.png" Width="20"></Image>
+                                    <Label Content="Sent"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/Important.png" Width="20"></Image>
+                                    <Label Content="Important"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="resources/ads.png"  Width="20"></Image>
+                                    <Label Content="Spam"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                    </TreeViewItem>
+                </TreeView>
+            
+            <!-- END OF SECOND MAIL-->
+
+
+                <TreeView Grid.Row="2"  Grid.Column="1" Name="treeView3" >
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="resources/plus.png" Width="20"></Image>
+                                <Label Content="Add another e-mail" FontFamily="Segoe UI Emoji"></Label>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+
+                        <!-- Child Items -->
+
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel>
+                                    <TextBox Text="E-mail" Margin="0,5,0,0"/>
+                                    <TextBox Text="Password" Margin="0,5,0,0" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+
+                    </TreeViewItem>
+                </TreeView>
+
+            </StackPanel>
+
+            <TextBlock Grid.Row="2" Grid.Column="2" Background="#FFF0F0F0" Margin="15,0,15,15">
+            sadsdasdsadsa
+            </TextBlock>
+
+            <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0.4,-0.4,0.4">
+                <StatusBarItem Content=":((((((((("/>
+                <Separator/>
+                <StatusBarItem Content=":)))))))))))))"/>
+            </StatusBar>
+
+
         </Grid>
     </Grid>
 </Window>
