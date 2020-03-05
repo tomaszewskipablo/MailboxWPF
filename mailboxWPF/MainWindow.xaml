@@ -9,19 +9,21 @@
     <Grid>
         <Grid Background="#00ff85">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="153*"/>
+                <ColumnDefinition Width="240"/>
+                <ColumnDefinition Width="241.6"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <Menu Grid.ColumnSpan="3" Margin="20,6,20,0.4" FontSize="15" Background="#ffffff">
+            <Menu Grid.ColumnSpan="3" Margin="20,6,19.6,0.4" FontSize="15" Background="#ffffff">
                 <MenuItem Header="File" Background="#ffffff" Height="24" >
                     <MenuItem Header="New message">
                         <MenuItem.Icon>
@@ -67,23 +69,30 @@
                 </MenuItem>
             </Menu>
 
-            <ListView Grid.Row="2" Name="listView" Margin="15,0,15,204.4" Grid.RowSpan="2">
-                <ListViewItem>Project replacemnt</ListViewItem>
-                <ListViewItem>de</ListViewItem>
-                <ListViewItem>iks</ListViewItem>
-                <ListViewItem>de</ListViewItem>
-                <ListViewItem>iks</ListViewItem>
-                <ListViewItem>de</ListViewItem>
-                <ListViewItem>iksasasadsadsadsadss</ListViewItem>
-                <ListViewItem>de</ListViewItem>
-                <ListViewItem>iks</ListViewItem>
-                <ListViewItem>de</ListViewItem>
-                <ListViewItem>iks</ListViewItem>
-                <ListViewItem>de</ListViewItem>
+            <Label Grid.Row="2" Grid.Column="0" Margin="15.4,0.2,14.6,1.2" Background="#FFA0E7CE">E-mails</Label>
+            <ListView Grid.Row="3" Name="listView" Margin="15,0.2,15,29" Grid.RowSpan="3">
+                <ListViewItem>
+
+                    Project replacemnt
+
+                </ListViewItem>
+
+                <ListViewItem>New appointemnt</ListViewItem>
+                <ListViewItem>Appointment</ListViewItem>
+                <ListViewItem>Emergency meeting</ListViewItem>
+                <ListViewItem>Travell</ListViewItem>
+                <ListViewItem>Money</ListViewItem>
+                <ListViewItem>Comming students</ListViewItem>
+                <ListViewItem>Appointment</ListViewItem>
+                <ListViewItem>Appointments</ListViewItem>
+                <ListViewItem>Appointment</ListViewItem>
+                <ListViewItem>Appointments</ListViewItem>
+                <ListViewItem>Appointment</ListViewItem>
 
             </ListView>
 
-            <StackPanel Grid.Row="2"  Grid.Column="1">
+
+            <StackPanel Grid.Row="2"  Grid.Column="1" Margin="0,0.2,1.6,29" Grid.RowSpan="4">
                 <TreeView  Name="treeView1" >
                     <TreeViewItem >
                         <TreeViewItem.Header>
@@ -185,8 +194,8 @@
 
                     </TreeViewItem>
                 </TreeView>
-            
-            <!-- END OF SECOND MAIL-->
+
+                <!-- END OF SECOND MAIL-->
 
 
                 <TreeView Grid.Row="2"  Grid.Column="1" Name="treeView3" >
@@ -215,15 +224,16 @@
 
             </StackPanel>
 
-            <TextBlock Grid.Row="2" Grid.Column="2" Background="#FFF0F0F0" Margin="15,0,15,15">
-            sadsdasdsadsa
-            </TextBlock>
+            <!--<StackPanel Grd.Column="2" Margin="5.4,0.2,-0.4,0.4" Grid.RowSpan="2" >-->
 
-            <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0.4,-0.4,0.4">
-                <StatusBarItem Content=":((((((((("/>
-                <Separator/>
-                <StatusBarItem Content=":)))))))))))))"/>
-            </StatusBar>
+            <Label Grid.Row="2" Grid.Column="2" Margin="15.4,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
+            <Label Grid.Row="2" Grid.Column="2" Margin="15.4,30.2,14.6,1.6" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
+            <TextBlock  Background="#FFFFFF" Grid.Row="4" Grid.Column="2" Margin="15,0.4,15,0" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                         and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." UseLayoutRounding="False"  />
+            <!--</StackPanel>-->
+
+
 
 
         </Grid>
