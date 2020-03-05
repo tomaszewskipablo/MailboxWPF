@@ -7,6 +7,65 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid Background="#00ff85">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="153*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Menu Grid.ColumnSpan="3" Margin="20,6,20,0.4" FontSize="15" Background="#ffffff">
+                <MenuItem Header="File" Background="#ffffff" Height="24" >
+                    <MenuItem Header="New message">
+                        <MenuItem.Icon>
+                            <Image Source="resources/mail.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Header="Exit">
+                        <!--<MenuItem Header="elo" Click="MenuItem_Click"/>-->
+                        <MenuItem.Icon>
+                            <Image Source="resources/logout.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Replay" Margin="30,0,10,0">
+                    <MenuItem.Icon>
+                        <Image Source="resources/replay.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Replay to all" Margin="10,0,10,0">
+                    <MenuItem.Icon>
+                        <Image Source="resources/replayToAll.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Forward" Margin="10,0,10,0">
+                    <MenuItem.Icon>
+                        <Image Source="resources/send.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Delete" Margin="10,0,10,0">
+                    <MenuItem.Icon>
+                        <Image Source="resources/delete.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="New message" Margin="10,0,10,0">
+                    <MenuItem.Icon>
+                        <Image Source="resources/mail.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+        </Grid>
     </Grid>
 </Window>

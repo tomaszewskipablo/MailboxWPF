@@ -94,5 +94,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\ads.png" />
+    <Resource Include="resources\delete.png" />
+    <Resource Include="resources\gmail.png" />
+    <Resource Include="resources\important.png" />
+    <Resource Include="resources\inbox.png" />
+    <Resource Include="resources\logout.png" />
+    <Resource Include="resources\mail.png" />
+    <Resource Include="resources\outlook.png" />
+    <Resource Include="resources\pending.png" />
+    <Resource Include="resources\replay.png" />
+    <Resource Include="resources\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\replayToAll.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
