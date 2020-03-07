@@ -17,17 +17,39 @@ namespace mailboxWPF
 {
     public class Controller
     {
-        private static MainWindow mainWindow;
-        public static Mailbox user1;
-        public static Mailbox user2;
+        private static readonly Controller _instance;
+        private MainWindow mainWindow;
+        public  Mailbox user1;
+        public Mailbox user2;
 
-        public Controller(MainWindow _mainWindow)
+        static Controller()
         {
-            mainWindow = _mainWindow;
+            _instance = new Controller();
+            
+            
+        }
+        private Controller()
+        {
+        }
+        public static Controller Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+
+        public void LoadView(MainWindow mainWindow)
+        {
+            this.mainWindow = mainWindow;
+            
+        
         }
 
         public void LoadMailBoxes(Mailbox mailbox1, Mailbox mailbox2)
         {
+            
             user1 = mailbox1;
             user2 = mailbox2;
 
@@ -42,16 +64,21 @@ namespace mailboxWPF
                 user2.AddMail(mail, _folder);
         }
 
-        public void emailsToListView()
+        public void inboxToListView(Mailbox user)
         {
             mainWindow.listView.Items.Clear();
             for (int i = 0; i < user1.inbox.Count; i++)
             {
                 mainWindow.listView.Items.Add(user1.inbox[i].Topic);
+            } 
+        }
+        public void spamToListView()
+        {
+            mainWindow.listView.Items.Clear();
+            for (int i = 0; i < user1.spam.Count; i++)
+            {
+                mainWindow.listView.Items.Add(user1.spam[i].Topic);
             }
-
-  
-           
         }
     }
 

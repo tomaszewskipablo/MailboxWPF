@@ -23,9 +23,9 @@ namespace mailboxWPF
         public MainWindow()
         {
             InitializeComponent();
-            
-            Controller controller = new Controller(this);
 
+            Controller controller = Controller.Instance;
+            controller.LoadView(this);
 
             Mailbox user1 = new Mailbox("pawel.tomaszewski@gmail.com");
             Mailbox user2 = new Mailbox("pablo522@o2.pl");
@@ -40,9 +40,8 @@ namespace mailboxWPF
 
         private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
-            Controller controller = new Controller(this);
-            controller.emailsToListView();
+            Controller controller = Controller.Instance;
+            controller.inboxToListView(controller.user1);
             
         }
 

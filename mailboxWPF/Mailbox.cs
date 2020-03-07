@@ -54,13 +54,7 @@ namespace mailboxWPF
             AddMail(mail, Folder.inbox);
 
         }
-        public void LoadInboxToViewList() {
-           
-        }
-       // public DeleteEmail() { }
-     //   public LoadEmailToTextBox() { }
 
 
-        
     }
 }
