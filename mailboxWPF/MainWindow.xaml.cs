@@ -35,31 +35,44 @@ namespace mailboxWPF
             
             user1.LoadEmails();
 
-            user1.LoadEmails();    
+            user2.LoadEmails();    
         }
 
-        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.inboxToListView(controller.user1);
-            
         }
 
 
         private void mail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ListViewItem1.Content = "Project replacemnt";
-            ListViewItem2.Content = "New appointemnt";
-            ListViewItem3.Content = "Appointment";
-            ListViewItem4.Content = "Emergency meeting";
-            ListViewItem5.Content = "Travell";
-            ListViewItem6.Content = "Appointment";
-            ListViewItem7.Content = "Comming students";
-            ListViewItem8.Content = "Money";
-            ListViewItem9.Content = "";
-            ListViewItem10.Content = "";
-            ListViewItem11.Content = "";
-            ListViewItem12.Content = "";
+            Controller controller = Controller.Instance;
+            controller.inboxToListView(controller.user2);
+        }
+
+        private void inboxMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.inboxToListView(controller.user1);
+        }
+
+        private void inboxMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.inboxToListView(controller.user1);
+        }
+
+        private void spamMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.spamToListView(controller.user1);
+        }
+
+        private void spamMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.spamToListView(controller.user1);
         }
 
         private void CloseProgram(object sender, RoutedEventArgs e)

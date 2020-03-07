@@ -11,7 +11,7 @@ namespace mailboxWPF
         public string name { get; set; }
         public List<Mail> inbox;
         public List<Mail> spam;
-        public List<Mail> important;
+        public List<Mail> sent;
         public List<Mail> deleted;
 
         public Mailbox(string name)
@@ -19,7 +19,7 @@ namespace mailboxWPF
             this.name = name;
             inbox = new List<Mail>();
             spam = new List<Mail>();
-            important = new List<Mail>();
+            sent = new List<Mail>();
             deleted = new List<Mail>();
         }
         public void AddMail(Mail mail, Folder folder)
@@ -28,8 +28,8 @@ namespace mailboxWPF
              inbox.Add(mail);
             if (Folder.spam == folder)
                 spam.Add(mail);
-            if (Folder.important == folder)
-                important.Add(mail);
+            if (Folder.sent == folder)
+                sent.Add(mail);
             else
                 deleted.Add(mail);
         }
@@ -52,6 +52,21 @@ namespace mailboxWPF
             AddMail(mail, Folder.inbox);
             mail = new Mail("delivery", "pawel.tomaszewski@gmail.com", "test@gmail.com", "NOOOOOOO to Thanks for your time");
             AddMail(mail, Folder.inbox);
+
+            mail = new Mail("New cost of production", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
+            AddMail(mail, Folder.sent);
+            mail = new Mail("1 000 000 euro to win", "pawel.tomaszewski@gmail.com", "lotto@gmail.com", "NOOOOOOO to Thanks for your time");
+            AddMail(mail, Folder.sent);
+
+            mail = new Mail("Lottery", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
+            AddMail(mail, Folder.spam);
+            mail = new Mail("1 000 000 euro to win", "pawel.tomaszewski@gmail.com", "lotto@gmail.com", "NOOOOOOO to Thanks for your time");
+            AddMail(mail, Folder.spam);
+
+            mail = new Mail("Lottery", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
+            AddMail(mail, Folder.spam);
+            mail = new Mail("1 000 000 euro to win", "pawel.tomaszewski@gmail.com", "lotto@gmail.com", "NOOOOOOO to Thanks for your time");
+            AddMail(mail, Folder.spam);
 
         }
 

@@ -9,7 +9,7 @@ public enum Folder
 {
     inbox = 0,
     spam = 1,
-    important = 2,
+    sent = 2,
     deleted = 3,
 }
 
@@ -72,12 +72,28 @@ namespace mailboxWPF
                 mainWindow.listView.Items.Add(user1.inbox[i].Topic);
             } 
         }
-        public void spamToListView()
+        public void spamToListView(Mailbox user)
         {
             mainWindow.listView.Items.Clear();
             for (int i = 0; i < user1.spam.Count; i++)
             {
                 mainWindow.listView.Items.Add(user1.spam[i].Topic);
+            }
+        }
+        public void sentToListView(Mailbox user)
+        {
+            mainWindow.listView.Items.Clear();
+            for (int i = 0; i < user1.sent.Count; i++)
+            {
+                mainWindow.listView.Items.Add(user1.sent[i].Topic);
+            }
+        }
+        public void deletedToListView(Mailbox user)
+        {
+            mainWindow.listView.Items.Clear();
+            for (int i = 0; i < user1.deleted.Count; i++)
+            {
+                mainWindow.listView.Items.Add(user1.deleted[i].Topic);
             }
         }
     }
