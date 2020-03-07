@@ -31,8 +31,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="Exit">
-                        <!--<MenuItem Header="elo" Click="MenuItem_Click"/>-->
+                    <MenuItem Header="Exit" Click="CloseProgram">
                         <MenuItem.Icon>
                             <Image Source="resources/logout.png"/>
                         </MenuItem.Icon>
@@ -88,12 +87,12 @@
 
 
             <StackPanel Grid.Row="2"  Grid.Column="1" Margin="0,0.2,1.6,29" Grid.RowSpan="4">
-                <TreeView  Name="treeView1" >
-                    <TreeViewItem >
+                <TreeView  Name="EmailList">
+                    <TreeViewItem Name="Mailbox1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="resources/outlook.png" Width="24"></Image>
-                                <Label Content="pablo552@gmail.com" FontFamily="Segoe UI Emoji" MouseDoubleClick="Label_MouseDoubleClick"></Label>
+                                <Label Name="mail1" Content="pablo552@gmail.com" FontFamily="Segoe UI Emoji" MouseDoubleClick="Label_MouseDoubleClick"></Label>
                             </StackPanel>
                         </TreeViewItem.Header>
 
@@ -136,16 +135,16 @@
                         </TreeViewItem>
 
                     </TreeViewItem>
-                </TreeView>
+                
 
                 <!-- START OF SECOND MAIL-->
 
-                <TreeView Grid.Row="2"  Grid.Column="1" Name="treeView2" MouseDoubleClick="mail2_MouseDoubleClick" >
+                
                     <TreeViewItem >
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="resources/gmail.png" Width="24"></Image>
-                                <Label Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji"></Label>
+                                <Label Name="mail2" Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji"></Label>
                             </StackPanel>
                         </TreeViewItem.Header>
 
@@ -188,12 +187,12 @@
                         </TreeViewItem>
 
                     </TreeViewItem>
-                </TreeView>
+                
 
                 <!-- END OF SECOND MAIL-->
 
 
-                <TreeView Grid.Row="2"  Grid.Column="1" Name="treeView3" >
+               
                     <TreeViewItem >
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -215,8 +214,8 @@
 
 
                     </TreeViewItem>
+                
                 </TreeView>
-
             </StackPanel>
 
             

@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Mailbox.cs" />
+    <Compile Include="Mails.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -112,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="mainWindow\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

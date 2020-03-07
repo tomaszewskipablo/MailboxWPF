@@ -23,22 +23,27 @@ namespace mailboxWPF
         public MainWindow()
         {
             InitializeComponent();
+            
+            Controller controller = new Controller(this);
+
+
+            Mailbox user1 = new Mailbox("pawel.tomaszewski@gmail.com");
+            Mailbox user2 = new Mailbox("pablo522@o2.pl");
+
+            controller.LoadMailBoxes(user1, user2);
+
+            
+            user1.LoadEmails();
+
+            user1.LoadEmails();    
         }
 
         private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ListViewItem1.Content = "Get new iPhone";
-            ListViewItem2.Content = "New gift for you";
-            ListViewItem3.Content = "Volkswagen up!";
-            ListViewItem4.Content = "new movies in Cinema";
-            ListViewItem5.Content = "We have gift for you";
-            ListViewItem6.Content = "new movies in Cinema";
-            ListViewItem7.Content = "We have gift for you";
-            ListViewItem8.Content = "We have gift for you";
-            ListViewItem9.Content = "new movies in Cinema";
-            ListViewItem10.Content = "We have gift for you";
-            ListViewItem11.Content = "Post";
-            ListViewItem12.Content = "peyment reminder";
+            
+            Controller controller = new Controller(this);
+            controller.emailsToListView();
+            
         }
 
 
@@ -56,6 +61,11 @@ namespace mailboxWPF
             ListViewItem10.Content = "";
             ListViewItem11.Content = "";
             ListViewItem12.Content = "";
+        }
+
+        private void CloseProgram(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }
