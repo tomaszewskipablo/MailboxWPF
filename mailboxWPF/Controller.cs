@@ -67,33 +67,33 @@ namespace mailboxWPF
         public void inboxToListView(Mailbox user)
         {
             mainWindow.listView.Items.Clear();
-            for (int i = 0; i < user1.inbox.Count; i++)
+            for (int i = 0; i < user.inbox.Count; i++)
             {
-                mainWindow.listView.Items.Add(user1.inbox[i].Topic);
+                mainWindow.listView.Items.Add(user.inbox[i].Topic);
             } 
         }
         public void spamToListView(Mailbox user)
         {
             mainWindow.listView.Items.Clear();
-            for (int i = 0; i < user1.spam.Count; i++)
+            for (int i = 0; i < user.spam.Count; i++)
             {
-                mainWindow.listView.Items.Add(user1.spam[i].Topic);
+                mainWindow.listView.Items.Add(user.spam[i].Topic);
             }
         }
         public void sentToListView(Mailbox user)
         {
             mainWindow.listView.Items.Clear();
-            for (int i = 0; i < user1.sent.Count; i++)
+            for (int i = 0; i < user.sent.Count; i++)
             {
-                mainWindow.listView.Items.Add(user1.sent[i].Topic);
+                mainWindow.listView.Items.Add(user.sent[i].Topic);
             }
         }
         public void deletedToListView(Mailbox user)
         {
             mainWindow.listView.Items.Clear();
-            for (int i = 0; i < user1.deleted.Count; i++)
+            for (int i = 0; i < user.deleted.Count; i++)
             {
-                mainWindow.listView.Items.Add(user1.deleted[i].Topic);
+                mainWindow.listView.Items.Add(user.deleted[i].Topic);
             }
         }
     }

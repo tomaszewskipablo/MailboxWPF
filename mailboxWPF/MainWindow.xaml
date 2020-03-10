@@ -55,7 +55,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="Delete" Margin="10,0,10,0">
+                <MenuItem Name="DeleteButton" Header="Delete" Margin="10,0,10,0" Click="DeleteButton_Click">
                     <MenuItem.Icon>
                         <Image Source="resources/delete.png"/>
                     </MenuItem.Icon>
@@ -70,18 +70,7 @@
 
             <Label Grid.Row="2" Grid.Column="0" Margin="15.4,0.2,14.6,1.2" Background="#FFA0E7CE">E-mails</Label>
             <ListView Grid.Row="3" Name="listView" Margin="15,0.2,15,29" Grid.RowSpan="3">
-                <ListViewItem Name="ListViewItem1">Project replacemnt</ListViewItem>
-                <ListViewItem Name="ListViewItem2">New appointemnt</ListViewItem>
-                <ListViewItem Name="ListViewItem3">Appointment</ListViewItem>
-                <ListViewItem Name="ListViewItem4">Emergency meeting</ListViewItem>
-                <ListViewItem Name="ListViewItem5"></ListViewItem>
-                <ListViewItem Name="ListViewItem6">Money</ListViewItem>
-                <ListViewItem Name="ListViewItem7">Comming students</ListViewItem>
-                <ListViewItem Name="ListViewItem8">Appointment</ListViewItem>
-                <ListViewItem Name="ListViewItem9">Appointments</ListViewItem>
-                <ListViewItem Name="ListViewItem10">Appointment</ListViewItem>
-                <ListViewItem Name="ListViewItem11" >Appointments</ListViewItem>
-                <ListViewItem Name="ListViewItem12">Appointment</ListViewItem>
+                
 
             </ListView>
 
@@ -111,7 +100,7 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/pending.png" Width="20"></Image>
-                                    <Label Content="Sent"></Label>
+                                    <Label Content="Sent"  MouseDoubleClick="sentMail1_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -120,7 +109,7 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/important.png" Width="20"></Image>
-                                    <Label Content="deleted"></Label>
+                                    <Label Content="Deleted" MouseDoubleClick="deletedMail1_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -163,7 +152,7 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/pending.png" Width="20"></Image>
-                                    <Label Content="Sent"></Label>
+                                    <Label Content="Sent" MouseDoubleClick="sentMail2_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -172,7 +161,7 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/Important.png" Width="20"></Image>
-                                    <Label Content="Important"></Label>
+                                    <Label Content="Deleted" MouseDoubleClick="deletedMail2_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>

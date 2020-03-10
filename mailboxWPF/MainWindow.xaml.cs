@@ -40,8 +40,8 @@ namespace mailboxWPF
 
         private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Controller controller = Controller.Instance;
-            controller.inboxToListView(controller.user1);
+            //Controller controller = Controller.Instance;
+            //controller.inboxToListView(controller.user1);
         }
 
 
@@ -60,7 +60,7 @@ namespace mailboxWPF
         private void inboxMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
-            controller.inboxToListView(controller.user1);
+            controller.inboxToListView(controller.user2);
         }
 
         private void spamMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -72,12 +72,41 @@ namespace mailboxWPF
         private void spamMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
-            controller.spamToListView(controller.user1);
+            controller.spamToListView(controller.user2);
         }
+        private void sentMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.sentToListView(controller.user1);
+        }
+        private void sentMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.sentToListView(controller.user2);
+        }
+        private void deletedMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.deletedToListView(controller.user1);
+        }
+        private void deletedMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+            controller.deletedToListView(controller.user2);
+        }
+
+
+
 
         private void CloseProgram(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
