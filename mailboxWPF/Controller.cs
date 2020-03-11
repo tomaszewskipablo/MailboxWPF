@@ -12,6 +12,11 @@ public enum Folder
     sent = 2,
     deleted = 3,
 }
+public enum user
+{
+    user1 = 0,
+    user2 = 1,
+}
 
 namespace mailboxWPF
 {
@@ -21,6 +26,9 @@ namespace mailboxWPF
         private MainWindow mainWindow;
         public  Mailbox user1;
         public Mailbox user2;
+
+        public Folder currentFolder;
+        public user currentUser;
 
         static Controller()
         {
@@ -70,7 +78,9 @@ namespace mailboxWPF
             for (int i = 0; i < user.inbox.Count; i++)
             {
                 mainWindow.listView.Items.Add(user.inbox[i].Topic);
-            } 
+            }
+            
+
         }
         public void spamToListView(Mailbox user)
         {
@@ -79,6 +89,7 @@ namespace mailboxWPF
             {
                 mainWindow.listView.Items.Add(user.spam[i].Topic);
             }
+
         }
         public void sentToListView(Mailbox user)
         {
@@ -95,6 +106,64 @@ namespace mailboxWPF
             {
                 mainWindow.listView.Items.Add(user.deleted[i].Topic);
             }
+        }
+        public void deleteEmail(int i)
+        {
+            if (currentUser == user.user1)
+            {
+                if (currentFolder == Folder.inbox)
+                {
+                    user1.deleted.Add(user1.inbox[i]);
+                    user1.inbox.RemoveAt(i);
+                    inboxToListView(this.user1);
+                }
+                if (currentFolder == Folder.sent)
+                {
+                    user1.deleted.Add(user1.sent[i]);
+                    user1.sent.RemoveAt(i);
+                    sentToListView(this.user1);
+                }
+                if (currentFolder == Folder.spam)
+                {
+                    user1.deleted.Add(user1.spam[i]);
+                    user1.spam.RemoveAt(i);
+                    spamToListView(this.user1);
+                }
+                if (currentFolder == Folder.deleted)
+                {
+                    user1.deleted.RemoveAt(i);
+                    deletedToListView(this.user1);
+                }
+            }
+            else
+            {
+                if (currentFolder == Folder.inbox)
+                {
+                    user2.deleted.Add(user2.inbox[i]);
+                    user2.inbox.RemoveAt(i);
+                    inboxToListView(this.user2);
+                }
+                if (currentFolder == Folder.sent)
+                {
+                    user2.deleted.Add(user2.sent[i]);
+                    user2.sent.RemoveAt(i);
+                    sentToListView(this.user2);
+                }
+                if (currentFolder == Folder.spam)
+                {
+                    user2.deleted.Add(user2.spam[i]);
+                    user2.spam.RemoveAt(i);
+                    spamToListView(this.user2);
+                }
+                if (currentFolder == Folder.deleted)
+                {
+                    user2.deleted.RemoveAt(i);
+                    deletedToListView(this.user2);
+                }
+            }
+           
+
+            //if(currentFolder=Folder.inbox)
         }
     }
 

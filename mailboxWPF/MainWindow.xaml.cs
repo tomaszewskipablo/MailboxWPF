@@ -40,8 +40,11 @@ namespace mailboxWPF
 
         private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //Controller controller = Controller.Instance;
-            //controller.inboxToListView(controller.user1);
+            Controller controller = Controller.Instance;
+            controller.inboxToListView(controller.user1);
+           
+            controller.currentFolder = Folder.inbox;
+            controller.currentUser = user.user1;
         }
 
 
@@ -49,50 +52,77 @@ namespace mailboxWPF
         {
             Controller controller = Controller.Instance;
             controller.inboxToListView(controller.user2);
+
+            controller.currentFolder = Folder.inbox;
+            controller.currentUser = user.user2;
         }
 
         private void inboxMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.inboxToListView(controller.user1);
+
+            controller.currentFolder = Folder.inbox;
+            controller.currentUser = user.user1;
         }
 
         private void inboxMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.inboxToListView(controller.user2);
+
+            controller.currentFolder = Folder.inbox;
+            controller.currentUser = user.user2;
         }
 
         private void spamMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.spamToListView(controller.user1);
+
+            controller.currentFolder = Folder.spam;
+            controller.currentUser = user.user1;
         }
 
         private void spamMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.spamToListView(controller.user2);
+
+            controller.currentFolder = Folder.spam;
+            controller.currentUser = user.user2;
         }
         private void sentMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.sentToListView(controller.user1);
+
+            controller.currentFolder = Folder.sent;
+            controller.currentUser = user.user1;
         }
         private void sentMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.sentToListView(controller.user2);
+
+            controller.currentFolder = Folder.sent;
+            controller.currentUser = user.user2;
         }
         private void deletedMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.deletedToListView(controller.user1);
+
+            controller.currentFolder = Folder.deleted;
+            controller.currentUser = user.user1;
         }
         private void deletedMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.deletedToListView(controller.user2);
+
+            controller.currentFolder = Folder.deleted;
+            controller.currentUser = user.user1;
         }
 
 
@@ -105,6 +135,17 @@ namespace mailboxWPF
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+
+            
+            Controller controller = Controller.Instance;
+            int selectedMail = this.listView.SelectedIndex;
+            if (selectedMail > 1)
+                controller.deleteEmail(selectedMail);
+            else
+            {
+                MessageBox.Show("Choose email to delete", "Error");
+ 
+            }
 
         }
 

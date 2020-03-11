@@ -14,6 +14,8 @@ namespace mailboxWPF
         public List<Mail> sent;
         public List<Mail> deleted;
 
+        
+
         public Mailbox(string name)
         {
             this.name = name;
