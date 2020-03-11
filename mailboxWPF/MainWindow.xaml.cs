@@ -125,9 +125,6 @@ namespace mailboxWPF
             controller.currentUser = user.user1;
         }
 
-
-
-
         private void CloseProgram(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -139,13 +136,29 @@ namespace mailboxWPF
             
             Controller controller = Controller.Instance;
             int selectedMail = this.listView.SelectedIndex;
-            if (selectedMail > 1)
-                controller.deleteEmail(selectedMail);
+
+            if (selectedMail > -1)
+            {
+                if (controller.currentFolder == Folder.deleted)
+                {
+                    if (!(MessageBox.Show("Do tou really want to delete message?", "Warnning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No))
+                    {
+                        controller.deleteEmail(selectedMail);
+                    }
+                    else
+                    {
+                     //   controller.deleteEmail(selectedMail);
+                    }
+                }        
+                else
+                    controller.deleteEmail(selectedMail);
+            }
             else
             {
                 MessageBox.Show("Choose email to delete", "Error");
- 
             }
+
+
 
         }
 
