@@ -61,6 +61,8 @@ namespace mailboxWPF
             user1 = mailbox1;
             user2 = mailbox2;
 
+            
+            
             mainWindow.mail1.Content = mailbox1.name;
             mainWindow.mail2.Content = mailbox2.name;
         }

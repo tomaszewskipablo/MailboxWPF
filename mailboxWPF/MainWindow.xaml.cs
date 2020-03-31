@@ -141,13 +141,9 @@ namespace mailboxWPF
             {
                 if (controller.currentFolder == Folder.deleted)
                 {
-                    if (!(MessageBox.Show("Do tou really want to delete message?", "Warnning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No))
+                    if (!(MessageBox.Show("Do you really want to delete message?", "Warnning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No))
                     {
                         controller.deleteEmail(selectedMail);
-                    }
-                    else
-                    {
-                     //   controller.deleteEmail(selectedMail);
                     }
                 }        
                 else

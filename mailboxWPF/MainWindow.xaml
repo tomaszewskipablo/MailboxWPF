@@ -7,24 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid Background="#00ff85">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="104*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="731*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="#00ff85" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-6">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
-                <ColumnDefinition Width="241.6"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="50*" MinWidth="50" MaxWidth="50"/>
+                <ColumnDefinition Width="155*" MinWidth="50" MaxWidth="240" />
+                <ColumnDefinition Width="256*" MinWidth="150" MaxWidth="300"/>
+                <ColumnDefinition Width="333*" MinWidth="200"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="60.8"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="293*"/>
+                <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
 
-            <Menu Grid.ColumnSpan="3" Margin="20,6,19.6,0.4" FontSize="15" Background="#ffffff">
-                <MenuItem Header="File" Background="#ffffff" Height="24" >
+
+
+
+            <Menu Grid.ColumnSpan="4" Margin="20,8,19.6,9.8" FontSize="15" Background="#ffffff" BorderThickness="0" >
+                <MenuItem Header="File" Background="#ffffff" Height="43" RenderTransformOrigin="0.567,1.008" Width="37" FontSize="17">
                     <MenuItem Header="New message">
                         <MenuItem.Icon>
                             <Image Source="resources/mail.png"/>
@@ -37,45 +48,52 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Replay" Margin="30,0,10,0">
-                    <MenuItem.Icon>
-                        <Image Source="resources/replay.png"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-
-                <MenuItem Header="Replay to all" Margin="10,0,10,0">
-                    <MenuItem.Icon>
-                        <Image Source="resources/replayToAll.png"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-
-                <MenuItem Header="Forward" Margin="10,0,10,0">
-                    <MenuItem.Icon>
-                        <Image Source="resources/send.png"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-
-                <MenuItem Name="DeleteButton" Header="Delete" Margin="10,0,10,0" Click="DeleteButton_Click">
-                    <MenuItem.Icon>
-                        <Image Source="resources/delete.png"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-
-                <MenuItem Header="New message" Margin="10,0,10,0">
-                    <MenuItem.Icon>
-                        <Image Source="resources/mail.png"/>
-                    </MenuItem.Icon>
-                </MenuItem>
             </Menu>
 
-            <Label Grid.Row="2" Grid.Column="0" Margin="15.4,0.2,14.6,1.2" Background="#FFA0E7CE">E-mails</Label>
-            <ListView Grid.Row="3" Name="listView" Margin="15,0.2,15,29" Grid.RowSpan="3">
-                
+
+            <ToolBar Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="0.4,8,144.6,0" HorizontalAlignment="Stretch" Background="#FFFFFF" Height="43" Grid.Column="1">
+                <Button  Width="120" Height="35" HorizontalAlignment="Left" Background="#FFFFFF" Margin="10,0,10,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="resources/replay.png" Height="20" RenderTransformOrigin="0.427,1.07"/>
+                        <Label x:Name="replay" Content="Replay" Height="26" RenderTransformOrigin="0.5,0.664" />
+                    </StackPanel>
+                </Button>
+
+                <Button  Width="120" Height="35" HorizontalAlignment="Left" Background="#FFFFFF" Margin="10,0,10,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="resources/replayToAll.png" Height="20" RenderTransformOrigin="0.427,1.07"/>
+                        <Label x:Name="replayToAll" Content="Replay to all" Height="26" RenderTransformOrigin="0.5,0.664" />
+                    </StackPanel>
+                </Button>
+
+                <Button  Width="120" Height="35" HorizontalAlignment="Left" Background="#FFFFFF" Margin="10,0,10,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="resources/send.png" Height="20" RenderTransformOrigin="0.427,1.07"/>
+                        <Label x:Name="forward" Content="Forwerd" Height="26" RenderTransformOrigin="0.5,0.664" />
+                    </StackPanel>
+                </Button>
+
+                <Button  Width="120" Height="35" HorizontalAlignment="Left" Background="#FFFFFF" Margin="10,0,10,0" Click="DeleteButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="resources/delete.png" Height="20" RenderTransformOrigin="0.427,1.07"/>
+                        <Label x:Name="delete" Content="Delete" Height="26" RenderTransformOrigin="0.5,0.664" />
+                    </StackPanel>
+                </Button>
+
+            </ToolBar>
+
+
+
+
+
+            <Label Grid.Row="1" Grid.Column="0" Margin="15,0.2,0.8,1.2" Background="#FFA0E7CE" Grid.ColumnSpan="2">E-mails</Label>
+            <ListView Grid.Row="1" Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="2">
 
             </ListView>
 
 
-            <StackPanel Grid.Row="2"  Grid.Column="1" Margin="0,0.2,1.6,29" Grid.RowSpan="4">
+
+            <StackPanel Grid.Row="1"  Grid.Column="2" Margin="20.2,0.2,1.8,0" Grid.RowSpan="3">
                 <TreeView  Name="EmailList">
                     <TreeViewItem Name="Mailbox1">
                         <TreeViewItem.Header>
@@ -100,7 +118,7 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/pending.png" Width="20"></Image>
-                                    <Label Content="Sent"  MouseDoubleClick="sentMail1_MouseDoubleClick"></Label>
+                                    <Label Content="Sent" MouseDoubleClick="sentMail1_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -118,22 +136,22 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/ads.png"  Width="20"></Image>
-                                    <Label Content="Spam"  MouseDoubleClick="spamMail1_MouseDoubleClick"></Label>
+                                    <Label Content="Spam" MouseDoubleClick="spamMail1_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                     </TreeViewItem>
-                
 
-                <!-- START OF SECOND MAIL-->
 
-                
+                    <!-- START OF SECOND MAIL-->
+
+
                     <TreeViewItem >
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="resources/gmail.png" Width="24"></Image>
-                                <Label Name="mail2" Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji"></Label>
+                                <Label Name="mail2" Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji" MouseDoubleClick="inboxMail2_MouseDoubleClick"></Label>
                             </StackPanel>
                         </TreeViewItem.Header>
 
@@ -170,18 +188,18 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="resources/ads.png"  Width="20"></Image>
-                                    <Label Content="Spam"  MouseDoubleClick="spamMail2_MouseDoubleClick"></Label>
+                                    <Label Content="Spam" MouseDoubleClick="spamMail2_MouseDoubleClick"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                     </TreeViewItem>
-                
-
-                <!-- END OF SECOND MAIL-->
 
 
-               
+                    <!-- END OF SECOND MAIL-->
+
+
+
                     <TreeViewItem >
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -203,18 +221,16 @@
 
 
                     </TreeViewItem>
-                
+
                 </TreeView>
             </StackPanel>
 
-            
 
-            <Label Grid.Row="2" Grid.Column="2" Margin="15.4,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
-            <Label Grid.Row="2" Grid.Column="2" Margin="15.4,30.2,14.6,1.6" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
-            <TextBlock  Background="#FFFFFF" Grid.Row="4" Grid.Column="2" Margin="15,0.4,15,0" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                         and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." UseLayoutRounding="False"  />
-           
+
+            <Label Grid.Row="1" Grid.Column="3" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
+            <Label Grid.Row="1" Grid.Column="3" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
+            <TextBlock  Background="#FFFFFF" Grid.Row="3" Grid.Column="3" Margin="17.6,5.8,14,0" Text="Lorem Ipsum is simply dummy text of the printing" UseLayoutRounding="False"  />
+
 
 
 
