@@ -32,11 +32,9 @@
             </Grid.RowDefinitions>
 
 
-
-
             <Menu Grid.ColumnSpan="4" Margin="20,8,19.6,9.8" FontSize="15" Background="#ffffff" BorderThickness="0" >
                 <MenuItem Header="File" Background="#ffffff" Height="43" RenderTransformOrigin="0.567,1.008" Width="37" FontSize="17">
-                    <MenuItem Header="New message" Click="sendMessageWindow_MouseDoubleClick">
+                    <MenuItem Header="New message" Click="SendMessageWindow_MouseDoubleClick">
                         <MenuItem.Icon>
                             <Image Source="resources/mail.png"/>
                         </MenuItem.Icon>

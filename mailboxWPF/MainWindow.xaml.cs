@@ -258,9 +258,9 @@ namespace mailboxWPF
             }
         }
 
-        public void sendMessageWindow_MouseDoubleClick(object sender, RoutedEventArgs e)
+        public void SendMessageWindow_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            SendMessageWindow sendMessageWindow = new SendMessageWindow();
+            SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
 
 
             if (sendMessageWindow.ShowDialog() == true)

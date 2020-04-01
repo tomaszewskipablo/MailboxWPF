@@ -22,8 +22,10 @@ namespace mailboxWPF
     /// </summary>
     public partial class SendMessageWindow : Window
     {
-        public SendMessageWindow()
+        MainWindow mainWindow;
+        public SendMessageWindow(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
@@ -31,7 +33,7 @@ namespace mailboxWPF
         {
             if (subject.Text.Length > 0 && recipient.Text.Length > 0)
             {
-                ;
+                this.Close();
             }
             else
             {
