@@ -24,6 +24,7 @@ namespace mailboxWPF
     {
         private static readonly Controller _instance;
         private MainWindow mainWindow;
+        private SendMessageWindow sendMessageWindow;
         public  Mailbox user1;
         public Mailbox user2;
 
@@ -32,9 +33,7 @@ namespace mailboxWPF
 
         static Controller()
         {
-            _instance = new Controller();
-            
-            
+            _instance = new Controller();   
         }
         private Controller()
         {
@@ -51,18 +50,17 @@ namespace mailboxWPF
         public void LoadView(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
-            
-        
+        }
+        public void LoadSendMessageWindow(SendMessageWindow sendMessageWindow)
+        {
+            this.sendMessageWindow = sendMessageWindow;
         }
 
         public void LoadMailBoxes(Mailbox mailbox1, Mailbox mailbox2)
         {
-            
             user1 = mailbox1;
             user2 = mailbox2;
 
-            
-            
             mainWindow.mail1.Content = mailbox1.name;
             mainWindow.mail2.Content = mailbox2.name;
         }

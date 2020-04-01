@@ -32,17 +32,17 @@ namespace mailboxWPF
 
             controller.LoadMailBoxes(user1, user2);
 
-            
+
             user1.LoadEmails();
 
-            user2.LoadEmails();    
+            user2.LoadEmails();
         }
 
         private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Controller controller = Controller.Instance;
             controller.inboxToListView(controller.user1);
-           
+
             controller.currentFolder = Folder.inbox;
             controller.currentUser = user.user1;
         }
@@ -133,7 +133,7 @@ namespace mailboxWPF
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 
-            
+
             Controller controller = Controller.Instance;
             int selectedMail = this.listView.SelectedIndex;
 
@@ -145,7 +145,7 @@ namespace mailboxWPF
                     {
                         controller.deleteEmail(selectedMail);
                     }
-                }        
+                }
                 else
                     controller.deleteEmail(selectedMail);
             }
@@ -153,10 +153,21 @@ namespace mailboxWPF
             {
                 MessageBox.Show("Choose email to delete", "Error");
             }
-
-
-
         }
 
+        public void sendMessageWindow_MouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            Controller controller = Controller.Instance;
+
+            SendMessageWindow sendMessageWindow = new SendMessageWindow();
+
+
+            if (sendMessageWindow.ShowDialog() == true)
+            {
+                // text = dw.textbox.Text;
+            }
+
+            controller.LoadSendMessageWindow(sendMessageWindow);
+        }
     }
 }
