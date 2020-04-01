@@ -143,9 +143,6 @@ namespace mailboxWPF
                     deletedToListView(this.user2);
                 }
             }
-
-
-            //if(currentFolder=Folder.inbox)
         }
         private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

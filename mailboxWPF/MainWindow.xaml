@@ -225,7 +225,7 @@
                 </TreeView>
             </StackPanel>
 
-
+            
 
             <Label Grid.Row="1" Grid.Column="3" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
             <Label Grid.Row="1" Grid.Column="3" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
