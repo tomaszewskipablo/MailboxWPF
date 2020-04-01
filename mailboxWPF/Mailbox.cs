@@ -37,7 +37,6 @@ namespace mailboxWPF
         }
         public void LoadEmails()
         {
-
             Mail mail = new Mail("Changes", "pawel.tomaszewski@gmail.com", "from@gmail.com", "There was many changes. Thanks for your time");
             AddMail(mail, Folder.inbox);
             mail = new Mail("Test mail", "pawel.tomaszewski@gmail.com", "test@gmail.com", "NOOOOOOO to Thanks for your time");
