@@ -27,11 +27,11 @@
             </ComboBox>
         </StackPanel>
 
-        <TextBox Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0">Recipient</TextBox>
-        <TextBox Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0">Copy recipient</TextBox>
-        <TextBox Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0">Subject</TextBox>
+        <TextBox x:Name="recipient" Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0">Recipient</TextBox>
+        <TextBox x:Name="copyRecipient" Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0">Copy recipient</TextBox>
+        <TextBox x:Name="subject" Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0">Subject</TextBox>
 
-        <TextBox Margin="10,9.8,9.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2">EMAIL CONTENT</TextBox>
+        <TextBox Margin="10,2.2,4.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2">EMAIL CONTENT</TextBox>
 
         <Button Margin="10.2,2,9.6,0.4" Grid.Row="2" Grid.Column="1">Add atachement</Button>
 
@@ -40,6 +40,6 @@
             <ListBoxItem>dcscs</ListBoxItem>
         </ListBox>
 
-        <Button Background="#FFA0E7CE" Margin="10.2,10.4,9.6,10" Grid.Row="5" Grid.Column="1">Send</Button>
+        <Button Background="#FFA0E7CE" Margin="10.2,10.4,9.6,10" Grid.Row="5" Grid.Column="1" Click="Button_Click">Send</Button>
     </Grid>
 </Window>

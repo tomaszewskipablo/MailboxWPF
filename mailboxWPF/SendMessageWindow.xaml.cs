@@ -23,5 +23,17 @@ namespace mailboxWPF
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(subject.Text.Length > 0 && recipient.Text.Length > 0)
+            {
+               ;
+            }
+            else
+            {
+                MessageBox.Show("Fill recipient and subject fields to send the message", "Error");
+            }
+        }
     }
 }
