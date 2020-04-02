@@ -70,14 +70,29 @@ namespace mailboxWPF
                 ListViewItem item = new ListViewItem();
                 item.Content = currentFolderPointer[i].Topic;
                 item.MouseLeftButtonUp += Item_MouseLeftButtonUp;
+                item.MouseDoubleClick += Item_MouseDoubleClick;
 
                 listView.Items.Add(item);               
             }
         }
 
+        private void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
+
+            int selectedMail = this.listView.SelectedIndex;
+            sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
+            sendMessageWindow.author.Text = currentFolderPointer[selectedMail].Author;
+            sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
+
+            if (sendMessageWindow.ShowDialog() == true)
+            {
+                // text = dw.textbox.Text;
+            }
+        }
+
         private void Item_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
             emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
