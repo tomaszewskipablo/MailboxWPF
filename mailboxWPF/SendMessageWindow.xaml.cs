@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using Microsoft.Win32;
+using System.IO;
+using System.Text;
 
 
 namespace mailboxWPF
@@ -84,35 +86,19 @@ namespace mailboxWPF
                 var imageFilter = "Image(*.JPG; *.PNG; *.GIF; *.BMP)| *.JPG; *.PNG; *.GIF; *.BMP |";
                 var videoFilter = "Video(*.WMV;*.MPG;*.MPEG)| *.WMV;*.MPG;*.MPEG |";
                 var audioFilter = "Audio(*.MP3)| *.MP3 |";
-                dlg.Filter = imageFilter + videoFilter + audioFilter + "All files (*.*)|*.*";
+                dlg.Filter = "All files (*.*)|*.* |" + imageFilter + videoFilter + audioFilter;
 
                 if (dlg.ShowDialog() == true)
                 {
-                    foreach (String file in dlg.FileNames)
+                    foreach (String path in dlg.FileNames)
                     {
-                        string fileName = GetFileNameFromPath(file);
+                    // get file extensions  
+                    string fileName = System.IO.Path.GetFileName(path);
                     addedAtachements.Items.Add(fileName);
                     }
                 }
             // make attachment list visible
             addedAtachements.Visibility = Visibility.Visible;
-            }
-
-            private string GetFileNameFromPath(string path)
-            {
-                //int lastFolderIndex = 0;
-                //string file;
-                //for (int i = 0; i < path.Length; i++)
-                //{
-                //    if (path[i] == '\\')
-                //    {
-                //        lastFolderIndex = i;
-                //    }
-                //}
-
-                //file = path.Substring(lastFolderIndex + 1);
-
-                return path;
             }
         }
 }
