@@ -73,23 +73,46 @@ namespace mailboxWPF
 
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            // Configure open file dialog box
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = "Document"; // Default file name
-            dlg.DefaultExt = ".txt"; // Default file extension
-            dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
 
-            // Show open file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
-
-            // Process open file dialog box results
-            if (result == true)
+            private void Button_Click_1(object sender, RoutedEventArgs e)
             {
-                // Open document
-                string filename = dlg.FileName;
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+                dlg.Multiselect = true;
+                dlg.Title = "Select Attachments";
+
+                // .jpg, .png, .gif, .bmp, .wmv, .mp3, .mpg, .mpeg, and all files
+                var imageFilter = "Image(*.JPG; *.PNG; *.GIF; *.BMP)| *.JPG; *.PNG; *.GIF; *.BMP |";
+                var videoFilter = "Video(*.WMV;*.MPG;*.MPEG)| *.WMV;*.MPG;*.MPEG |";
+                var audioFilter = "Audio(*.MP3)| *.MP3 |";
+                dlg.Filter = imageFilter + videoFilter + audioFilter + "All files (*.*)|*.*";
+
+                if (dlg.ShowDialog() == true)
+                {
+                    foreach (String file in dlg.FileNames)
+                    {
+                        string fileName = GetFileNameFromPath(file);
+                    addedAtachements.Items.Add(fileName);
+                    }
+                }
+            // make attachment list visible
+            addedAtachements.Visibility = Visibility.Visible;
+            }
+
+            private string GetFileNameFromPath(string path)
+            {
+                //int lastFolderIndex = 0;
+                //string file;
+                //for (int i = 0; i < path.Length; i++)
+                //{
+                //    if (path[i] == '\\')
+                //    {
+                //        lastFolderIndex = i;
+                //    }
+                //}
+
+                //file = path.Substring(lastFolderIndex + 1);
+
+                return path;
             }
         }
-    }
 }

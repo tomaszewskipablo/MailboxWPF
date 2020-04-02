@@ -34,8 +34,8 @@
         <Button Margin="10.2,2,9.6,0.4" Grid.Row="2" Grid.Column="1" Click="Button_Click_1">Add atachement</Button>
 
 
-        <ListBox Background="#FFA0E7CE" Margin="10.2,9.8,9.6,9.6" Grid.Row="4" Grid.Column="1">
-            <ListBoxItem>dcscs</ListBoxItem>
+        <ListBox x:Name="addedAtachements" Background="#FFA0E7CE" Margin="10.2,9.8,9.6,9.6" Grid.Row="4" Grid.Column="1">
+            
         </ListBox>
 
         <Button Background="#FFA0E7CE" Margin="10.2,10.4,9.6,10" Grid.Row="5" Grid.Column="1" Click="Button_Click">Send</Button>
