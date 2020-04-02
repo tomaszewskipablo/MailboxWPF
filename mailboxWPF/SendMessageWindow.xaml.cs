@@ -73,9 +73,6 @@ namespace mailboxWPF
             }
         }
 
-
-
-
             private void Button_Click_1(object sender, RoutedEventArgs e)
             {
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -86,7 +83,7 @@ namespace mailboxWPF
                 var imageFilter = "Image(*.JPG; *.PNG; *.GIF; *.BMP)| *.JPG; *.PNG; *.GIF; *.BMP |";
                 var videoFilter = "Video(*.WMV;*.MPG;*.MPEG)| *.WMV;*.MPG;*.MPEG |";
                 var audioFilter = "Audio(*.MP3)| *.MP3 |";
-                dlg.Filter = "All files (*.*)|*.* |" + imageFilter + videoFilter + audioFilter;
+                dlg.Filter = imageFilter + videoFilter + audioFilter + "All files (*.*)|*.*";
 
                 if (dlg.ShowDialog() == true)
                 {

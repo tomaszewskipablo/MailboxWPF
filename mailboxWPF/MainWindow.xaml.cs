@@ -36,7 +36,10 @@ namespace mailboxWPF
         public Mailbox user1;
         public Mailbox user2;
 
-        public Folder currentFolder;
+        public List<Mail> currentFolderPointer;
+        public Mailbox currentUserPtr;
+
+        public Folder currentFolder=Folder.sent;
         public user currentUser;
         public MainWindow()
         {
@@ -47,7 +50,6 @@ namespace mailboxWPF
 
             user1.LoadEmails();
             user2.LoadEmails();
-
         }
         private void LoadMail(Mail mail, Folder _folder, int number)
         {
@@ -56,97 +58,50 @@ namespace mailboxWPF
             else
                 user2.AddMail(mail, _folder);
         }
+        private void MailsToListView()
+        {
+            listView.Items.Clear(); 
+            for (int i = 0; i < currentFolderPointer.Count; i++)
+            {
+                listView.Items.Add(currentFolderPointer[i].Topic);
+            }
+        }
         public void inboxToListView(Mailbox user)
         {
-            listView.Items.Clear();
-            for (int i = 0; i < user.inbox.Count; i++)
-            {
-                listView.Items.Add(user.inbox[i].Topic);
-            }
+            currentUserPtr = user;
+            currentFolderPointer = user.inbox;
+            MailsToListView();
         }
         public void spamToListView(Mailbox user)
         {
-            listView.Items.Clear();
-            for (int i = 0; i < user.spam.Count; i++)
-            {
-                listView.Items.Add(user.spam[i].Topic);
-            }
-
+            currentUserPtr = user;
+            currentFolderPointer = user.spam;
+            MailsToListView();
         }
         public void sentToListView(Mailbox user)
         {
-            listView.Items.Clear();
-            for (int i = 0; i < user.sent.Count; i++)
-            {
-                listView.Items.Add(user.sent[i].Topic);
-            }
+            currentUserPtr = user;
+            currentFolderPointer = user.sent;
+            MailsToListView();
         }
         public void deletedToListView(Mailbox user)
         {
-            listView.Items.Clear();
-            for (int i = 0; i < user.deleted.Count; i++)
-            {
-                listView.Items.Add(user.deleted[i].Topic);
-            }
+            currentUserPtr = user;
+            currentFolderPointer = user.deleted;
+            MailsToListView();
         }
         public void deleteEmail(int i)
         {
-            if (currentUser == user.user1)
-            {
-                if (currentFolder == Folder.inbox)
-                {
-                    user1.deleted.Add(user1.inbox[i]);
-                    user1.inbox.RemoveAt(i);
-                    inboxToListView(this.user1);
-                }
-                if (currentFolder == Folder.sent)
-                {
-                    user1.deleted.Add(user1.sent[i]);
-                    user1.sent.RemoveAt(i);
-                    sentToListView(this.user1);
-                }
-                if (currentFolder == Folder.spam)
-                {
-                    user1.deleted.Add(user1.spam[i]);
-                    user1.spam.RemoveAt(i);
-                    spamToListView(this.user1);
-                }
-                if (currentFolder == Folder.deleted)
-                {
-                    user1.deleted.RemoveAt(i);
-                    deletedToListView(this.user1);
-                }
+            if(currentFolder != Folder.deleted) { 
+                currentUserPtr.deleted.Add(currentFolderPointer[i]);
             }
-            else
-            {
-                if (currentFolder == Folder.inbox)
-                {
-                    user2.deleted.Add(user2.inbox[i]);
-                    user2.inbox.RemoveAt(i);
-                    inboxToListView(this.user2);
-                }
-                if (currentFolder == Folder.sent)
-                {
-                    user2.deleted.Add(user2.sent[i]);
-                    user2.sent.RemoveAt(i);
-                    sentToListView(this.user2);
-                }
-                if (currentFolder == Folder.spam)
-                {
-                    user2.deleted.Add(user2.spam[i]);
-                    user2.spam.RemoveAt(i);
-                    spamToListView(this.user2);
-                }
-                if (currentFolder == Folder.deleted)
-                {
-                    user2.deleted.RemoveAt(i);
-                    deletedToListView(this.user2);
-                }
-            }
+            currentFolderPointer.RemoveAt(i);
+            
+
+            MailsToListView();
         }
         private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
             inboxToListView(user1);
 
             currentFolder = Folder.inbox;
@@ -155,8 +110,7 @@ namespace mailboxWPF
 
 
         private void mail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
+        {   
             inboxToListView(user2);
 
             currentFolder = Folder.inbox;
@@ -181,8 +135,7 @@ namespace mailboxWPF
         }
 
         private void spamMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
+        {           
             spamToListView(user1);
 
             currentFolder = Folder.spam;
@@ -266,6 +219,28 @@ namespace mailboxWPF
             if (sendMessageWindow.ShowDialog() == true)
             {
                 // text = dw.textbox.Text;
+            }
+        }
+
+
+        private void replayButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (currentFolder == Folder.inbox || currentFolder == Folder.spam || currentFolder == Folder.deleted)
+            {
+                SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
+
+                int selectedMail = this.listView.SelectedIndex;
+                //sendMessageWindow.recipient = currentFolder[selectedMail];
+
+                if (sendMessageWindow.ShowDialog() == true)
+                {
+                    // text = dw.textbox.Text;
+                }
+            }
+            else
+            {
+                MessageBox.Show("You cannot replay for your own email", "Error");
             }
         }
     }
