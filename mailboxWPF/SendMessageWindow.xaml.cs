@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 
 using Microsoft.Win32;
 using System.IO;
-using System.Text;
 
 
 namespace mailboxWPF
@@ -31,7 +30,7 @@ namespace mailboxWPF
             InitializeComponent();
 
             author.Items.Add(mainWindow.user1.name);
-            author.Items.Add(mainWindow.user2.name);
+            author.Items.Add(mainWindow.user2.name);  
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

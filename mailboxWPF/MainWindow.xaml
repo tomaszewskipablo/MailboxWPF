@@ -225,9 +225,9 @@
 
             
 
-            <Label Grid.Row="1" Grid.Column="3" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
-            <Label Grid.Row="1" Grid.Column="3" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
-            <TextBlock  Background="#FFFFFF" Grid.Row="3" Grid.Column="3" Margin="17.6,5.8,14,0" Text="Lorem Ipsum is simply dummy text of the printing" UseLayoutRounding="False"  />
+            <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="3" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
+            <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="3" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
+            <TextBlock x:Name="emailContent" Background="#FFFFFF" Grid.Row="3" Grid.Column="3" Margin="17.6,5.8,14,0" TextWrapping="Wrap" UseLayoutRounding="False"  />
 
 
 

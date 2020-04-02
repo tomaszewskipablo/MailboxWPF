@@ -50,6 +50,10 @@ namespace mailboxWPF
 
             user1.LoadEmails();
             user2.LoadEmails();
+
+            currentUserPtr = user1;
+            currentFolderPointer = user1.inbox;
+            MailsToListView();
         }
         private void LoadMail(Mail mail, Folder _folder, int number)
         {
@@ -63,9 +67,22 @@ namespace mailboxWPF
             listView.Items.Clear(); 
             for (int i = 0; i < currentFolderPointer.Count; i++)
             {
-                listView.Items.Add(currentFolderPointer[i].Topic);
+                ListViewItem item = new ListViewItem();
+                item.Content = currentFolderPointer[i].Topic;
+                item.MouseLeftButtonUp += Item_MouseLeftButtonUp;
+
+                listView.Items.Add(item);               
             }
         }
+
+        private void Item_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            
+            emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
+            emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
+            emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
+        }
+
         public void inboxToListView(Mailbox user)
         {
             currentUserPtr = user;
@@ -238,6 +255,19 @@ namespace mailboxWPF
                     // text = dw.textbox.Text;
                 }
             }
+            //else if (this.listView.SelectedIndex =
+                
+                
+                
+                
+                
+                
+                
+                
+            //    = -1)
+            //{
+            //    MessageBox.Show("Choose email to replay", "Error");
+            //}
             else
             {
                 MessageBox.Show("You cannot replay for your own email", "Error");
@@ -246,18 +276,25 @@ namespace mailboxWPF
 
         private void forwardButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (this.listView.SelectedIndex != -1)
+            {
                 SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
 
                 int selectedMail = this.listView.SelectedIndex;
-            sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
-            sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
+                sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
+                sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
 
                 if (sendMessageWindow.ShowDialog() == true)
                 {
                     // text = dw.textbox.Text;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Choose email to forward", "Error");
+            }
 
         }
+
     }
 }
