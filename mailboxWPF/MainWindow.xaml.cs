@@ -231,7 +231,7 @@ namespace mailboxWPF
                 SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
 
                 int selectedMail = this.listView.SelectedIndex;
-                //sendMessageWindow.recipient = currentFolder[selectedMail];
+                sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
 
                 if (sendMessageWindow.ShowDialog() == true)
                 {
@@ -242,6 +242,22 @@ namespace mailboxWPF
             {
                 MessageBox.Show("You cannot replay for your own email", "Error");
             }
+        }
+
+        private void forwardButton_Click(object sender, RoutedEventArgs e)
+        {
+
+                SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
+
+                int selectedMail = this.listView.SelectedIndex;
+            sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
+            sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
+
+                if (sendMessageWindow.ShowDialog() == true)
+                {
+                    // text = dw.textbox.Text;
+                }
+
         }
     }
 }
