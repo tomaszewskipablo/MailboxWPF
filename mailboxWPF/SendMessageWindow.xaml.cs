@@ -27,12 +27,42 @@ namespace mailboxWPF
         {
             this.mainWindow = mainWindow;
             InitializeComponent();
+
+            author.Items.Add(mainWindow.user1.name);
+            author.Items.Add(mainWindow.user2.name);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (subject.Text.Length > 0 && recipient.Text.Length > 0)
             {
+                string receiverStr = recipient.Text;
+                string authorStr = author.Text;
+                string topicStr = subject.Text;
+                string contentStr = content.Text;
+                Mail mail = new Mail(topicStr, authorStr, receiverStr, contentStr);
+
+                
+
+                if(mainWindow.user1.name == authorStr)
+                {
+                    mainWindow.user1.sent.Add(mail);
+                }
+                else if(mainWindow.user2.name == authorStr)
+                {
+                    mainWindow.user2.sent.Add(mail);
+                }
+                if (mainWindow.user1.name == receiverStr)
+                {
+                    mainWindow.user1.inbox.Add(mail);
+                }
+                else if(mainWindow.user2.name == receiverStr)
+                {
+                    mainWindow.user2.inbox.Add(mail);
+                }
+                //mail.Receiver = recipient.Text.
+
+
                 this.Close();
             }
             else

@@ -33,8 +33,8 @@ namespace mailboxWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Mailbox user1;
-        Mailbox user2;
+        public Mailbox user1;
+        public Mailbox user2;
 
         public Folder currentFolder;
         public user currentUser;

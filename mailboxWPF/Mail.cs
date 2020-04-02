@@ -13,6 +13,10 @@ namespace mailboxWPF
         public string Receiver;
         public string Content;
 
+        public Mail()
+        {
+        }
+
         public Mail(string Topic, string Author, string Receiver, string Content)
         {
             this.Topic = Topic;
