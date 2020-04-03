@@ -83,7 +83,17 @@ namespace mailboxWPF
             int selectedMail = this.listView.SelectedIndex;
             sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
             sendMessageWindow.author.Text = currentFolderPointer[selectedMail].Author;
+            sendMessageWindow.recipient.Text= currentFolderPointer[selectedMail].Receiver;
             sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
+
+            sendMessageWindow.subject.IsReadOnly = true;
+            sendMessageWindow.author.IsReadOnly = true;
+            sendMessageWindow.recipient.IsReadOnly = true;
+            sendMessageWindow.content.IsReadOnly = true;
+            sendMessageWindow.copyRecipient.Text = "";
+            sendMessageWindow.copyRecipient.IsReadOnly = true;
+            sendMessageWindow.addAtachement.IsEnabled = false;
+            sendMessageWindow.sendButton.IsEnabled = false;
 
             if (sendMessageWindow.ShowDialog() == true)
             {
