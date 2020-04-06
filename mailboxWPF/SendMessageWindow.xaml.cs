@@ -24,6 +24,12 @@ namespace mailboxWPF
     public partial class SendMessageWindow : Window
     {
         MainWindow mainWindow;
+
+        bool isRecipientClicked = false;
+        bool isCopyRecipientClicked = false;
+        bool isSubjectClicked = false;
+
+
         public SendMessageWindow(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
@@ -96,5 +102,16 @@ namespace mailboxWPF
             // make attachment list visible
             addedAtachements.Visibility = Visibility.Visible;
             }
+
+        private void ClearText(object sender, RoutedEventArgs e)
+        {
+
+            TextBox textBox = (TextBox)sender;
+            if (!textBox.IsReadOnly)
+            {
+                textBox.Text = string.Empty;
+                textBox.GotFocus -= ClearText;
+            }
         }
+    }
 }

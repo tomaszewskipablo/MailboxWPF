@@ -25,11 +25,11 @@
             </ComboBox>
         </StackPanel>
 
-        <TextBox x:Name="recipient" Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0">Recipient</TextBox>
-        <TextBox x:Name="copyRecipient" Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0">Copy recipient</TextBox>
-        <TextBox x:Name="subject" Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0">Subject</TextBox>
+        <TextBox x:Name="recipient" Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0" GotFocus="ClearText">Recipient</TextBox>
+        <TextBox x:Name="copyRecipient" Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0" GotFocus="ClearText">Copy recipient</TextBox>
+        <TextBox x:Name="subject" Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0" GotFocus="ClearText">Subject</TextBox>
 
-        <TextBox x:Name="content" Margin="10,2.2,4.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2">EMAIL CONTENT</TextBox>
+        <TextBox x:Name="content" Margin="10,2.2,4.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2"></TextBox>
 
         <Button x:Name="addAtachement" Margin="10.2,2,9.6,0.4" Grid.Row="2" Grid.Column="1" Click="Button_Click_1">Add atachement</Button>
 
