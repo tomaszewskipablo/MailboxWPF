@@ -95,9 +95,9 @@
                 <TreeView  Name="EmailList">
                     <TreeViewItem Name="Mailbox1">
                         <TreeViewItem.Header>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" MouseLeftButtonDown="mail1_MouseLeftButtonDown">
                                 <Image Source="resources/outlook.png" Width="24"></Image>
-                                <Label Name="mail1" Content="pablo552@o2.pl" FontFamily="Segoe UI Emoji" MouseDoubleClick="mail1_MouseDoubleClick"></Label>
+                                <Label Name="mail1" Content="pablo552@o2.pl" FontFamily="Segoe UI Emoji"></Label>
                             </StackPanel>
                         </TreeViewItem.Header>
 
@@ -105,36 +105,36 @@
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="inboxMail1_MouseLeftButtonDown">
                                     <Image Source="resources/inbox.png" Width="20"></Image>
-                                    <Label Name="inbox1" Content="Inbox (19)" MouseDoubleClick="inboxMail1_MouseDoubleClick"></Label>
+                                    <Label Name="inbox1" Content="Inbox (19)"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="sentMail1_MouseLeftButtonDown">
                                     <Image Source="resources/pending.png" Width="20"></Image>
-                                    <Label Content="Sent" MouseDoubleClick="sentMail1_MouseDoubleClick"></Label>
+                                    <Label Content="Sent"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="deletedMail1_MouseLeftButtonDown">
                                     <Image Source="resources/important.png" Width="20"></Image>
-                                    <Label Content="Deleted" MouseDoubleClick="deletedMail1_MouseDoubleClick"></Label>
+                                    <Label Content="Deleted"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="spamMail1_MouseLeftButtonDown">
                                     <Image Source="resources/ads.png"  Width="20"></Image>
-                                    <Label Content="Spam" MouseDoubleClick="spamMail1_MouseDoubleClick"></Label>
+                                    <Label Content="Spam"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -147,9 +147,9 @@
 
                     <TreeViewItem >
                         <TreeViewItem.Header>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" MouseLeftButtonDown="inboxMail2_MouseLeftButtonDown">
                                 <Image Source="resources/gmail.png" Width="24"></Image>
-                                <Label Name="mail2" Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji" MouseDoubleClick="inboxMail2_MouseDoubleClick"></Label>
+                                <Label Name="mail2" Content="pawel.tomaszewski@gmail.com" FontFamily="Segoe UI Emoji"></Label>
                             </StackPanel>
                         </TreeViewItem.Header>
 
@@ -157,36 +157,36 @@
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="inboxMail2_MouseLeftButtonDown">
                                     <Image Source="resources/inbox.png" Width="20"></Image>
-                                    <Label Content="Inbox (19)" MouseDoubleClick="inboxMail2_MouseDoubleClick"></Label>
+                                    <Label Content="Inbox (19)"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="sentMail2_MouseLeftButtonDown">
                                     <Image Source="resources/pending.png" Width="20"></Image>
-                                    <Label Content="Sent" MouseDoubleClick="sentMail2_MouseDoubleClick"></Label>
+                                    <Label Content="Sent"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="deletedMail2_MouseLeftButtonDown">
                                     <Image Source="resources/Important.png" Width="20"></Image>
-                                    <Label Content="Deleted" MouseDoubleClick="deletedMail2_MouseDoubleClick"></Label>
+                                    <Label Content="Deleted"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="spamMail2_MouseLeftButtonDown">
                                     <Image Source="resources/ads.png"  Width="20"></Image>
-                                    <Label Content="Spam" MouseDoubleClick="spamMail2_MouseDoubleClick"></Label>
+                                    <Label Content="Spam"></Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>

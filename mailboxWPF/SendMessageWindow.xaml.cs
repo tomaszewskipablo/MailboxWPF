@@ -70,7 +70,6 @@ namespace mailboxWPF
                 {
                     mainWindow.user2.inbox.Add(mail);
                 }
-                //mail.Receiver = recipient.Text.
 
 
                 this.Close();
@@ -108,7 +107,6 @@ namespace mailboxWPF
 
         private void ClearText(object sender, RoutedEventArgs e)
         {
-
             TextBox textBox = (TextBox)sender;
             if (!textBox.IsReadOnly)
             {

@@ -39,12 +39,12 @@ namespace mailboxWPF
         public List<Mail> currentFolderPointer;
         public Mailbox currentUserPtr;
 
-        public Folder currentFolder=Folder.sent;
+        public Folder currentFolder = Folder.sent;
         public user currentUser;
         public MainWindow()
         {
             InitializeComponent();
-     
+
             user1 = new Mailbox("pawel.tomaszewski@gmail.com");
             user2 = new Mailbox("pablo522@o2.pl");
 
@@ -64,7 +64,7 @@ namespace mailboxWPF
         }
         private void MailsToListView()
         {
-            listView.Items.Clear(); 
+            listView.Items.Clear();
             for (int i = 0; i < currentFolderPointer.Count; i++)
             {
                 ListViewItem item = new ListViewItem();
@@ -72,7 +72,7 @@ namespace mailboxWPF
                 item.MouseLeftButtonUp += Item_MouseLeftButtonUp;
                 item.MouseDoubleClick += Item_MouseDoubleClick;
 
-                listView.Items.Add(item);               
+                listView.Items.Add(item);
             }
         }
 
@@ -83,7 +83,7 @@ namespace mailboxWPF
             int selectedMail = this.listView.SelectedIndex;
             sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
             sendMessageWindow.author.Text = currentFolderPointer[selectedMail].Author;
-            sendMessageWindow.recipient.Text= currentFolderPointer[selectedMail].Receiver;
+            sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
             sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
 
             sendMessageWindow.subject.IsReadOnly = true;
@@ -134,96 +134,16 @@ namespace mailboxWPF
         }
         public void deleteEmail(int i)
         {
-            if(currentFolder != Folder.deleted) { 
+            if (currentFolder != Folder.deleted)
+            {
                 currentUserPtr.deleted.Add(currentFolderPointer[i]);
             }
             currentFolderPointer.RemoveAt(i);
-            
+
 
             MailsToListView();
         }
-        private void mail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            inboxToListView(user1);
 
-            currentFolder = Folder.inbox;
-            currentUser = user.user1;
-        }
-
-
-        private void mail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {   
-            inboxToListView(user2);
-
-            currentFolder = Folder.inbox;
-            currentUser = user.user2;
-        }
-
-        private void inboxMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-            inboxToListView(user1);
-
-            currentFolder = Folder.inbox;
-            currentUser = user.user1;
-        }
-
-        private void inboxMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            inboxToListView(user2);
-
-            currentFolder = Folder.inbox;
-            currentUser = user.user2;
-        }
-
-        private void spamMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {           
-            spamToListView(user1);
-
-            currentFolder = Folder.spam;
-            currentUser = user.user1;
-        }
-
-        private void spamMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-            spamToListView(user2);
-
-            currentFolder = Folder.spam;
-            currentUser = user.user2;
-        }
-        private void sentMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-            sentToListView(user1);
-
-            currentFolder = Folder.sent;
-            currentUser = user.user1;
-        }
-        private void sentMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-            sentToListView(user2);
-
-            currentFolder = Folder.sent;
-            currentUser = user.user2;
-        }
-        private void deletedMail1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-            deletedToListView(user1);
-
-            currentFolder = Folder.deleted;
-            currentUser = user.user1;
-        }
-        private void deletedMail2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-            deletedToListView(user2);
-
-            currentFolder = Folder.deleted;
-            currentUser = user.user1;
-        }
 
         private void CloseProgram(object sender, RoutedEventArgs e)
         {
@@ -281,14 +201,14 @@ namespace mailboxWPF
                 }
             }
             //else if (this.listView.SelectedIndex =
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
             //    = -1)
             //{
             //    MessageBox.Show("Choose email to replay", "Error");
@@ -321,5 +241,79 @@ namespace mailboxWPF
 
         }
 
+        private void mail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            inboxToListView(user1);
+
+            currentFolder = Folder.inbox;
+            currentUser = user.user1;
+        }
+
+        private void inboxMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            inboxToListView(user1);
+
+            currentFolder = Folder.inbox;
+            currentUser = user.user1;
+        }
+
+        private void sentMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            sentToListView(user1);
+
+            currentFolder = Folder.sent;
+            currentUser = user.user1;
+        }
+
+        private void deletedMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            deletedToListView(user1);
+
+            currentFolder = Folder.deleted;
+            currentUser = user.user1;
+        }
+
+        private void spamMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            spamToListView(user1);
+
+            currentFolder = Folder.spam;
+            currentUser = user.user1;
+        }
+
+
+
+
+        private void inboxMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            inboxToListView(user2);
+
+            currentFolder = Folder.inbox;
+            currentUser = user.user2;
+        }
+
+        private void sentMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            sentToListView(user2);
+
+            currentFolder = Folder.sent;
+            currentUser = user.user2;
+        }
+
+        private void deletedMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            deletedToListView(user2);
+
+            currentFolder = Folder.deleted;
+            currentUser = user.user1;
+        }
+
+        private void spamMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            spamToListView(user2);
+
+            currentFolder = Folder.spam;
+            currentUser = user.user2;
+        }
     }
 }
