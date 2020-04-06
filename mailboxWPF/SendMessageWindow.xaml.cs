@@ -25,11 +25,6 @@ namespace mailboxWPF
     {
         MainWindow mainWindow;
 
-        bool isRecipientClicked = false;
-        bool isCopyRecipientClicked = false;
-        bool isSubjectClicked = false;
-
-
         public SendMessageWindow(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
@@ -63,7 +58,15 @@ namespace mailboxWPF
                 {
                     mainWindow.user1.inbox.Add(mail);
                 }
-                else if(mainWindow.user2.name == receiverStr)
+                else if (mainWindow.user2.name == receiverStr)
+                {
+                    mainWindow.user2.inbox.Add(mail);
+                }
+                if (mainWindow.user1.name == copyRecipient.Text)
+                {
+                    mainWindow.user1.inbox.Add(mail);
+                }
+                else if (mainWindow.user2.name == copyRecipient.Text)
                 {
                     mainWindow.user2.inbox.Add(mail);
                 }

@@ -97,7 +97,7 @@
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="resources/outlook.png" Width="24"></Image>
-                                <Label Name="mail1" Content="pablo552@gmail.com" FontFamily="Segoe UI Emoji" MouseDoubleClick="mail1_MouseDoubleClick"></Label>
+                                <Label Name="mail1" Content="pablo552@o2.pl" FontFamily="Segoe UI Emoji" MouseDoubleClick="mail1_MouseDoubleClick"></Label>
                             </StackPanel>
                         </TreeViewItem.Header>
 
