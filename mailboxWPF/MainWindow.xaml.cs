@@ -77,7 +77,7 @@ namespace mailboxWPF
            
             t.Header=mailBoxStackPanel;
             MailBoxesTree.Items.Add(t);
-            makeSubFolder("inbox", "resources/inbox.png", t);
+            makeSubFolder("Inbox", "resources/inbox.png", t);
             makeSubFolder("Sent", "resources/pending.png", t);
             makeSubFolder("Deleted", "resources/important.png", t);
             makeSubFolder("Spam", "resources/ads.png", t);
@@ -106,6 +106,9 @@ namespace mailboxWPF
         private void SubFolder_Click(object sender, MouseButtonEventArgs e)
         {
             StackPanel selectedFolder = (StackPanel)MailBoxesTree.SelectedItem;
+            Label selectedFolderLabel = (Label)selectedFolder.Children[1];
+            string selectedFolderStr = selectedFolderLabel.Content.ToString();
+
             TreeViewItem tree = (TreeViewItem)selectedFolder.Parent;
             StackPanel selectedMailbox = (StackPanel)tree.Header;
             Label label = (Label)selectedMailbox.Children[1];
@@ -121,9 +124,27 @@ namespace mailboxWPF
             }
 
 
+            if (selectedFolderStr == "Inbox")
+            {
+                currentFolderPointer = currentUserPtr.inbox;
+            }
+            else if (selectedFolderStr == "Sent")
+            {
+                currentFolderPointer = currentUserPtr.sent;
+            }
+            else if (selectedFolderStr == "Deleted")
+            {
+                currentFolderPointer = currentUserPtr.deleted;
+            }
+            else if (selectedFolderStr == "Spam")
+            {
+                currentFolderPointer = currentUserPtr.spam;
+            }
+            MailsToListView();
+        }
 
 
-    }
+    
         private void LoadMail(Mail mail, Folder _folder, int number)
         {
             mailBoxes[number].AddMail(mail, _folder);

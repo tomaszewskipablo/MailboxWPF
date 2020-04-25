@@ -47,23 +47,23 @@ namespace mailboxWPF
                 AddMail(mail, Folder.inbox);
                 mail = new Mail("Injury", "pawel.tomaszewski@gmail.com", "test@gmail.com", "NOOOOOOO to Thanks for your time");
                 AddMail(mail, Folder.inbox);
-                mail = new Mail("new phone number", "pawel.tomaszewski@gmail.com", "from@gmail.com", "There was many changes. Thanks for your time");
+                mail = new Mail("inbox folder", "pawel.tomaszewski@gmail.com", "from@gmail.com", "There was many changes. Thanks for your time");
                 AddMail(mail, Folder.inbox);
                 mail = new Mail("Great opportunity", "pawel.tomaszewski@gmail.com", "test@gmail.com", "NOOOOOOO to Thanks for your time");
                 AddMail(mail, Folder.inbox);
 
 
-                mail = new Mail("More money", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
+                mail = new Mail("Sent folder", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
                 AddMail(mail, Folder.sent);
                 mail = new Mail("interesting project", "pawel.tomaszewski@gmail.com", "lotto@gmail.com", "NOOOOOOO to Thanks for your time");
                 AddMail(mail, Folder.sent);
 
-                mail = new Mail("Lottery", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
+                mail = new Mail("Spam folder", "pawel.tomaszewski@gmail.com", "lottery@gmail.com", "so much money to win");
                 AddMail(mail, Folder.spam);
                 mail = new Mail("1 000 000 euro to win", "pawel.tomaszewski@gmail.com", "lotto@gmail.com", "NOOOOOOO to Thanks for your time");
                 AddMail(mail, Folder.spam);
 
-                mail = new Mail("Liverpool isn't gonna win", "pawel.tomaszewski@gmail.com", "test@gmail.com", "Message");
+                mail = new Mail("Delete folder", "pawel.tomaszewski@gmail.com", "test@gmail.com", "Message");
                 AddMail(mail, Folder.deleted);
                 mail = new Mail("delivery", "pawel.tomaszewski@gmail.com", "test@gmail.com", "not really important messages");
                 AddMail(mail, Folder.deleted);
