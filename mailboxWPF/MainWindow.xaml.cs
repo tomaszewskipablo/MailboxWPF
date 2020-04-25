@@ -34,7 +34,6 @@ namespace mailboxWPF
         public List<Mail> currentFolderPointer;
         public Mailbox currentUserPtr;
 
-        public Folder currentFolder = Folder.sent;
 
         public MainWindow()
         {
@@ -194,6 +193,7 @@ namespace mailboxWPF
         {
             emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
+            
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
         
@@ -254,31 +254,19 @@ namespace mailboxWPF
         private void replayButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (currentFolder == Folder.inbox || currentFolder == Folder.spam || currentFolder == Folder.deleted)
+            if (currentFolderPointer == currentUserPtr.deleted || currentFolderPointer == currentUserPtr.spam || currentFolderPointer == currentUserPtr.inbox)
             {
                 SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
 
                 int selectedMail = this.listView.SelectedIndex;
-                sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
+                sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Author;
 
                 if (sendMessageWindow.ShowDialog() == true)
                 {
                     // text = dw.textbox.Text;
                 }
             }
-            //else if (this.listView.SelectedIndex =
 
-
-
-
-
-
-
-
-            //    = -1)
-            //{
-            //    MessageBox.Show("Choose email to replay", "Error");
-            //}
             else
             {
                 MessageBox.Show("You cannot replay for your own email", "Error");
