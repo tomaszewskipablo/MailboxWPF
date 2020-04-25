@@ -140,6 +140,7 @@ namespace mailboxWPF
             {
                 currentFolderPointer = currentUserPtr.spam;
             }
+
             MailsToListView();
         }
 
@@ -195,33 +196,10 @@ namespace mailboxWPF
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
-        public void inboxToListView(Mailbox user)
-        {
-            currentUserPtr = user;
-            currentFolderPointer = user.inbox;
-            MailsToListView();
-        }
-        public void spamToListView(Mailbox user)
-        {
-            currentUserPtr = user;
-            currentFolderPointer = user.spam;
-            MailsToListView();
-        }
-        public void sentToListView(Mailbox user)
-        {
-            currentUserPtr = user;
-            currentFolderPointer = user.sent;
-            MailsToListView();
-        }
-        public void deletedToListView(Mailbox user)
-        {
-            currentUserPtr = user;
-            currentFolderPointer = user.deleted;
-            MailsToListView();
-        }
+        
         public void deleteEmail(int i)
         {
-            if (currentFolder != Folder.deleted)
+            if (currentFolderPointer != currentUserPtr.deleted)
             {
                 currentUserPtr.deleted.Add(currentFolderPointer[i]);
             }
@@ -244,7 +222,8 @@ namespace mailboxWPF
 
             if (selectedMail > -1)
             {
-                if (currentFolder == Folder.deleted)
+
+                if (currentFolderPointer == currentUserPtr.deleted)
                 {
                     if (!(MessageBox.Show("Do you really want to delete message?", "Warnning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No))
                     {
