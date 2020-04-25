@@ -66,6 +66,7 @@ namespace mailboxWPF
             image.Width = 24;
 
             Label label = new Label();
+
             label.Content = mailBoxToAdd.name;
 
             mailBoxStackPanel.Children.Add(image);
@@ -102,6 +103,27 @@ namespace mailboxWPF
 
             t.Items.Add(subFolder);
         }
+        private void SubFolder_Click(object sender, MouseButtonEventArgs e)
+        {
+            StackPanel selectedFolder = (StackPanel)MailBoxesTree.SelectedItem;
+            TreeViewItem tree = (TreeViewItem)selectedFolder.Parent;
+            StackPanel selectedMailbox = (StackPanel)tree.Header;
+            Label label = (Label)selectedMailbox.Children[1];
+            string labelStr = label.Content.ToString();
+
+            foreach(Mailbox m in mailBoxes)
+            {
+                if(m.name == labelStr)
+                {
+                    currentUserPtr = m;
+                    break;
+                }
+            }
+
+
+
+
+    }
         private void LoadMail(Mail mail, Folder _folder, int number)
         {
             mailBoxes[number].AddMail(mail, _folder);
@@ -152,7 +174,6 @@ namespace mailboxWPF
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
-
         public void inboxToListView(Mailbox user)
         {
             currentUserPtr = user;
