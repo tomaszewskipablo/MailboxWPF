@@ -20,9 +20,7 @@ namespace mailboxWPF
             this.Topic = Topic;
             this.Author = Author;
             this.Receiver = Receiver;
-            this.Content = Content;
-
-            
+            this.Content = Content;  
         }
 
 

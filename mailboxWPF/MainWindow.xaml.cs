@@ -20,11 +20,6 @@ public enum Folder
     sent = 2,
     deleted = 3,
 }
-public enum user
-{
-    user1 = 0,
-    user2 = 1,
-}
 
 namespace mailboxWPF
 {
@@ -33,34 +28,83 @@ namespace mailboxWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Mailbox user1;
-        public Mailbox user2;
+        List<Mailbox> mailBoxes;
+
 
         public List<Mail> currentFolderPointer;
         public Mailbox currentUserPtr;
 
         public Folder currentFolder = Folder.sent;
-        public user currentUser;
+
         public MainWindow()
         {
             InitializeComponent();
+            mailBoxes = new List<Mailbox>();
 
-            user1 = new Mailbox("pawel.tomaszewski@gmail.com");
-            user2 = new Mailbox("pablo522@o2.pl");
+            CreateTreeViewFromMailBox(new Mailbox("pawel.tomaszewski@gmail.com"), "resources/outlook.png");
+            CreateTreeViewFromMailBox(new Mailbox("pablo522@o2.pl"), "resources/gmail.png");
+            CreateTreeViewFromMailBox(new Mailbox("matus@o2.pl"), "resources/gmail.png");
 
-            user1.LoadEmails();
-            user2.LoadEmails();
+            mailBoxes[0].LoadEmails();
+            mailBoxes[1].LoadEmails();
 
-            currentUserPtr = user1;
-            currentFolderPointer = user1.inbox;
+           
+
+            currentUserPtr = mailBoxes[0];
+            currentFolderPointer = mailBoxes[0].inbox;
             MailsToListView();
+        }
+        private void CreateTreeViewFromMailBox(Mailbox mailBoxToAdd, string imagePath)
+        {
+            mailBoxes.Add(mailBoxToAdd);
+            
+            StackPanel mailBoxStackPanel = new StackPanel();
+            mailBoxStackPanel.Orientation = Orientation.Horizontal;
+            
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+            image.Width = 24;
+
+            Label label = new Label();
+            label.Content = mailBoxToAdd.name;
+
+            mailBoxStackPanel.Children.Add(image);
+            mailBoxStackPanel.Children.Add(label);
+
+
+            TreeViewItem t = new TreeViewItem();
+           
+            t.Header=mailBoxStackPanel;
+            MailBoxesTree.Items.Add(t);
+            makeSubFolder("inbox", "resources/inbox.png", t);
+            makeSubFolder("Sent", "resources/pending.png", t);
+            makeSubFolder("Deleted", "resources/important.png", t);
+            makeSubFolder("Spam", "resources/ads.png", t);
+        }
+
+        private void makeSubFolder(string name, string path, TreeViewItem t)
+        {            
+                StackPanel subFolder = new StackPanel();
+            subFolder.Orientation = Orientation.Horizontal;
+
+            subFolder.MouseLeftButtonUp += SubFolder_Click;
+
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(path, UriKind.Relative));
+            image.Width = 20;
+
+            Label label = new Label();
+            label.Content = name;
+
+            subFolder.Children.Add(image);
+            subFolder.Children.Add(label);
+
+
+            t.Items.Add(subFolder);
         }
         private void LoadMail(Mail mail, Folder _folder, int number)
         {
-            if (number == 1)
-                user1.AddMail(mail, _folder);
-            else
-                user2.AddMail(mail, _folder);
+            mailBoxes[number].AddMail(mail, _folder);
         }
         private void MailsToListView()
         {
@@ -76,6 +120,7 @@ namespace mailboxWPF
             }
         }
 
+        
         private void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
@@ -239,81 +284,6 @@ namespace mailboxWPF
                 MessageBox.Show("Choose email to forward", "Error");
             }
 
-        }
-
-        private void mail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            inboxToListView(user1);
-
-            currentFolder = Folder.inbox;
-            currentUser = user.user1;
-        }
-
-        private void inboxMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            inboxToListView(user1);
-
-            currentFolder = Folder.inbox;
-            currentUser = user.user1;
-        }
-
-        private void sentMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            sentToListView(user1);
-
-            currentFolder = Folder.sent;
-            currentUser = user.user1;
-        }
-
-        private void deletedMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            deletedToListView(user1);
-
-            currentFolder = Folder.deleted;
-            currentUser = user.user1;
-        }
-
-        private void spamMail1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            spamToListView(user1);
-
-            currentFolder = Folder.spam;
-            currentUser = user.user1;
-        }
-
-
-
-
-        private void inboxMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            inboxToListView(user2);
-
-            currentFolder = Folder.inbox;
-            currentUser = user.user2;
-        }
-
-        private void sentMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            sentToListView(user2);
-
-            currentFolder = Folder.sent;
-            currentUser = user.user2;
-        }
-
-        private void deletedMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            deletedToListView(user2);
-
-            currentFolder = Folder.deleted;
-            currentUser = user.user1;
-        }
-
-        private void spamMail2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            spamToListView(user2);
-
-            currentFolder = Folder.spam;
-            currentUser = user.user2;
         }
     }
 }
