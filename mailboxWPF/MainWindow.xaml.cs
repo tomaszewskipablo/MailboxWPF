@@ -302,20 +302,20 @@ namespace mailboxWPF
             XmlSerializer desrializer = new XmlSerializer(typeof(Mailbox));
             using (TextReader reader = new StreamReader(@"D:\_study\Maribor\WPF\data.xml"))
             {
-                object obj = desrializer.Deserialize(reader);
-                mailBoxes[0] = (Mailbox)obj;
+                mailBoxes = (List<Mailbox>)desrializer.Deserialize(reader);
             }
         }
 
         private void ExportClick(object sender, RoutedEventArgs e)
-        {
-            XmlSerializer serialier = new XmlSerializer(typeof(Mailbox));
+        {         
+            XmlSerializer serialier = new XmlSerializer(typeof(List<Mailbox>));
 
             string path = @"D:\_study\Maribor\WPF\data.xml";
 
-            using (TextWriter tw = new StreamWriter(path)) 
+            using (Stream tw = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                serialier.Serialize(tw, mailBoxes[1]);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Mailbox>));
+                serializer.Serialize(tw, mailBoxes);
             }
         }
     }
