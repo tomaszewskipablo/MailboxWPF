@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 public enum Folder
 {
@@ -302,7 +304,14 @@ namespace mailboxWPF
 
         private void ExportClick(object sender, RoutedEventArgs e)
         {
-            ;
+            XmlSerializer serialier = new XmlSerializer(typeof(Mail));
+
+            string path = @"D:\_study\Maribor\WPF\data.xml";
+
+            using (TextWriter tw = new StreamWriter(path)) 
+            {
+                serialier.Serialize(tw, mailBoxes[0].inbox[0]);
+            }
         }
     }
 }
