@@ -43,46 +43,47 @@ namespace mailboxWPF
             InitializeComponent();
             mailBoxes = new List<Mailbox>();
 
-            CreateTreeViewFromMailBox(new Mailbox("pawel.tomaszewski@gmail.com"), "resources/outlook.png");
-            CreateTreeViewFromMailBox(new Mailbox("pablo522@o2.pl"), "resources/gmail.png");
-            CreateTreeViewFromMailBox(new Mailbox("matus@o2.pl"), "resources/gmail.png");
-
-            mailBoxes[0].LoadEmails();
-            mailBoxes[1].LoadEmails();
+            //CreateTreeViewFromMailBox();
 
 
 
-            currentUserPtr = mailBoxes[0];
-            currentFolderPointer = mailBoxes[0].inbox;
-            MailsToListView();
+            
+
+
+
+            //currentUserPtr = mailBoxes[0];
+            //currentFolderPointer = mailBoxes[0].inbox;
+            //MailsToListView();
         }
-        private void CreateTreeViewFromMailBox(Mailbox mailBoxToAdd, string imagePath)
+        private void CreateTreeViewFromMailBox()
         {
-            mailBoxes.Add(mailBoxToAdd);
+            MailBoxesTree.Items.Clear();
 
-            StackPanel mailBoxStackPanel = new StackPanel();
-            mailBoxStackPanel.Orientation = Orientation.Horizontal;
+            foreach (Mailbox m in mailBoxes)
+            {
+                StackPanel mailBoxStackPanel = new StackPanel();
+                mailBoxStackPanel.Orientation = Orientation.Horizontal;
 
-            Image image = new Image();
-            image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
-            image.Width = 24;
+                Image image = new Image();
+                image.Width = 24;
 
-            Label label = new Label();
+                Label label = new Label();
 
-            label.Content = mailBoxToAdd.name;
+                label.Content = m.name;
 
-            mailBoxStackPanel.Children.Add(image);
-            mailBoxStackPanel.Children.Add(label);
+                mailBoxStackPanel.Children.Add(image);
+                mailBoxStackPanel.Children.Add(label);
 
 
-            TreeViewItem t = new TreeViewItem();
+                TreeViewItem t = new TreeViewItem();
 
-            t.Header = mailBoxStackPanel;
-            MailBoxesTree.Items.Add(t);
-            makeSubFolder("Inbox", "resources/inbox.png", t);
-            makeSubFolder("Sent", "resources/pending.png", t);
-            makeSubFolder("Deleted", "resources/important.png", t);
-            makeSubFolder("Spam", "resources/ads.png", t);
+                t.Header = mailBoxStackPanel;
+                MailBoxesTree.Items.Add(t);
+                makeSubFolder("Inbox", "resources/inbox.png", t);
+                makeSubFolder("Sent", "resources/pending.png", t);
+                makeSubFolder("Deleted", "resources/important.png", t);
+                makeSubFolder("Spam", "resources/ads.png", t);
+            }
         }
 
         private void makeSubFolder(string name, string path, TreeViewItem t)
@@ -321,6 +322,8 @@ namespace mailboxWPF
                     mailBoxes = (List<Mailbox>)desrializer.Deserialize(reader);
                 }
             }
+
+            CreateTreeViewFromMailBox();
         }
 
         private void ExportClick(object sender, RoutedEventArgs e)
