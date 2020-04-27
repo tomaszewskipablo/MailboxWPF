@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace mailboxWPF
         public List<Mail> deleted;
 
 
-
+        Mailbox() { }
         public Mailbox(string name)
         {
             this.name = name;
@@ -39,7 +40,9 @@ namespace mailboxWPF
         {
             if (name == "pablo522@o2.pl")
             {
-                Mail mail = new Mail("Changes", "pawel.tomaszewski@gmail.com", "pablo522@o2.pl", "There was many changes. Thanks for your time");
+                Mail mail = new Mail("Changes", "pawel.tomaszewski@gmail.com", "receiver522@o2.pl", "copy.receiver@gmail.com", "There was many changes. Thanks for your time");
+                AddMail(mail, Folder.inbox);
+                mail = new Mail("Changes", "pawel.tomaszewski@gmail.com", "pablo522@o2.pl", "There was many changes. Thanks for your time");
                 AddMail(mail, Folder.inbox);
                 mail = new Mail("Test mail", "pawel.tomaszewski@gmail.com", "pablo522@o2.pl", "NOOOOOOO to Thanks for your time");
                 AddMail(mail, Folder.inbox);
@@ -102,6 +105,13 @@ namespace mailboxWPF
 
         }
 
-
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("name", name);
+        }
+        public Mailbox(SerializationInfo info, StreamingContext context)
+        {
+            this.name = (string)info.GetValue("name", typeof(string));
+        }
     }
 }

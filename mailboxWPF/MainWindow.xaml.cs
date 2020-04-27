@@ -299,23 +299,23 @@ namespace mailboxWPF
 
         private void ImportClick(object sender, RoutedEventArgs e)
         {
-            XmlSerializer desrializer = new XmlSerializer(typeof(Mail));
+            XmlSerializer desrializer = new XmlSerializer(typeof(Mailbox));
             using (TextReader reader = new StreamReader(@"D:\_study\Maribor\WPF\data.xml"))
             {
                 object obj = desrializer.Deserialize(reader);
-                mailBoxes[0].inbox[0] = (Mail)obj;
+                mailBoxes[0] = (Mailbox)obj;
             }
         }
 
         private void ExportClick(object sender, RoutedEventArgs e)
         {
-            XmlSerializer serialier = new XmlSerializer(typeof(Mail));
+            XmlSerializer serialier = new XmlSerializer(typeof(Mailbox));
 
             string path = @"D:\_study\Maribor\WPF\data.xml";
 
             using (TextWriter tw = new StreamWriter(path)) 
             {
-                serialier.Serialize(tw, mailBoxes[0].inbox[2]);
+                serialier.Serialize(tw, mailBoxes[1]);
             }
         }
     }
