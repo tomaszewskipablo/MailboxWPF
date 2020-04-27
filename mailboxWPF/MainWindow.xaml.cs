@@ -299,7 +299,12 @@ namespace mailboxWPF
 
         private void ImportClick(object sender, RoutedEventArgs e)
         {
-            ;
+            XmlSerializer desrializer = new XmlSerializer(typeof(Mail));
+            using (TextReader reader = new StreamReader(@"D:\_study\Maribor\WPF\data.xml"))
+            {
+                object obj = desrializer.Deserialize(reader);
+                mailBoxes[0].inbox[0] = (Mail)obj;
+            }
         }
 
         private void ExportClick(object sender, RoutedEventArgs e)
@@ -310,7 +315,7 @@ namespace mailboxWPF
 
             using (TextWriter tw = new StreamWriter(path)) 
             {
-                serialier.Serialize(tw, mailBoxes[0].inbox[0]);
+                serialier.Serialize(tw, mailBoxes[0].inbox[2]);
             }
         }
     }
