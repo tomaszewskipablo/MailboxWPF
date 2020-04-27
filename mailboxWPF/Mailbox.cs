@@ -36,11 +36,6 @@ namespace mailboxWPF
             if (Folder.deleted == folder)
                 deleted.Add(mail);
         }
-        public void LoadEmails()
-        {
-            ;
-
-        }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {

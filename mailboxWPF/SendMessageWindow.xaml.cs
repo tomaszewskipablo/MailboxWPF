@@ -42,37 +42,35 @@ namespace mailboxWPF
                 string authorStr = author.Text;
                 string topicStr = subject.Text;
                 string contentStr = content.Text;
+
+                
                 Mail mail = new Mail(topicStr, authorStr, receiverStr, contentStr);
 
+                for (int i = 0; i < addedAtachements.Items.Count; i++)
+                {
+                    // attachements
+                    string attachemnt = addedAtachements.Items[i].ToString();
+                    mail.attachments.Add(attachemnt);
+                }
+                
 
 
-                //if (mainWindow.user1.name == authorStr)
-                //{
-                //    mainWindow.user1.sent.Add(mail);
-                //}
-                //else if (mainWindow.user2.name == authorStr)
-                //{
-                //    mainWindow.user2.sent.Add(mail);
-                //}
-                //if (mainWindow.user1.name == receiverStr)
-                //{
-                //    mainWindow.user1.inbox.Add(mail);
-                //}
-                //else if (mainWindow.user2.name == receiverStr)
-                //{
-                //    mainWindow.user2.inbox.Add(mail);
-                //}
-                //if (mainWindow.user1.name == copyRecipient.Text)
-                //{
-                //    mainWindow.user1.inbox.Add(mail);
-                //}
-                //else if (mainWindow.user2.name == copyRecipient.Text)
-                //{
-                //    mainWindow.user2.inbox.Add(mail);
-                //}
+                if (mainWindow.currentUserPtr.name == authorStr)
+                {
+                    mainWindow.currentUserPtr.sent.Add(mail);
+                }
 
+                if (mainWindow.currentUserPtr.name == receiverStr)
+                {
+                    mainWindow.currentUserPtr.inbox.Add(mail);
+                }
 
-                //this.Close();
+                if (mainWindow.currentUserPtr.name == copyRecipient.Text)
+                {
+                    mainWindow.currentUserPtr.inbox.Add(mail);
+                }
+
+                this.Close();
             }
             else
             {

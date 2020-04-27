@@ -42,18 +42,6 @@ namespace mailboxWPF
         {
             InitializeComponent();
             mailBoxes = new List<Mailbox>();
-
-            //CreateTreeViewFromMailBox();
-
-
-
-            
-
-
-
-            //currentUserPtr = mailBoxes[0];
-            //currentFolderPointer = mailBoxes[0].inbox;
-            //MailsToListView();
         }
         private void CreateTreeViewFromMailBox()
         {

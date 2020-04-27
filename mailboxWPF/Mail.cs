@@ -16,7 +16,7 @@ namespace mailboxWPF
         public string Receiver;
         public string CopyReceiver;
         public string Content;
-
+        public List<string> attachments;
 
         Mail() { }
         public Mail(string Topic, string Author, string Receiver, string Content)
@@ -24,7 +24,8 @@ namespace mailboxWPF
             this.Topic = Topic;
             this.Author = Author;
             this.Receiver = Receiver;
-            this.Content = Content;  
+            this.Content = Content;
+            attachments = new List<string>();
         }
 
         public Mail(string Topic, string Author, string Receiver, string CopyReceiver, string Content)
@@ -34,7 +35,9 @@ namespace mailboxWPF
             this.Receiver = Receiver;
             this.Content = Content;
             this.CopyReceiver = CopyReceiver;
+            attachments = new List<string>();
         }
+
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
