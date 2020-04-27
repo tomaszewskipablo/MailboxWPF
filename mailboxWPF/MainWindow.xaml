@@ -51,13 +51,13 @@
                 <MenuItem Header="Data" Background="#ffffff" Height="43" RenderTransformOrigin="0.567,1.008" Width="57" FontSize="17">
                     <MenuItem Header="Import" Click="ImportClick">
                         <MenuItem.Icon>
-                            <Image Source="resources/mail.png"/>
+                            <Image Source="resources/import.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="Expoty" Click="ExportClick">
+                    <MenuItem Header="Export" Click="ExportClick">
                         <MenuItem.Icon>
-                            <Image Source="resources/logout.png"/>
+                            <Image Source="resources/export.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>

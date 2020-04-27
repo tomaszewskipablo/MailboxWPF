@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace mailboxWPF
             mailBoxes[0].LoadEmails();
             mailBoxes[1].LoadEmails();
 
-           
+
 
             currentUserPtr = mailBoxes[0];
             currentFolderPointer = mailBoxes[0].inbox;
@@ -58,10 +59,10 @@ namespace mailboxWPF
         private void CreateTreeViewFromMailBox(Mailbox mailBoxToAdd, string imagePath)
         {
             mailBoxes.Add(mailBoxToAdd);
-            
+
             StackPanel mailBoxStackPanel = new StackPanel();
             mailBoxStackPanel.Orientation = Orientation.Horizontal;
-            
+
             Image image = new Image();
             image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
             image.Width = 24;
@@ -75,8 +76,8 @@ namespace mailboxWPF
 
 
             TreeViewItem t = new TreeViewItem();
-           
-            t.Header=mailBoxStackPanel;
+
+            t.Header = mailBoxStackPanel;
             MailBoxesTree.Items.Add(t);
             makeSubFolder("Inbox", "resources/inbox.png", t);
             makeSubFolder("Sent", "resources/pending.png", t);
@@ -85,8 +86,8 @@ namespace mailboxWPF
         }
 
         private void makeSubFolder(string name, string path, TreeViewItem t)
-        {            
-                StackPanel subFolder = new StackPanel();
+        {
+            StackPanel subFolder = new StackPanel();
             subFolder.Orientation = Orientation.Horizontal;
 
             subFolder.MouseLeftButtonUp += SubFolder_Click;
@@ -115,9 +116,9 @@ namespace mailboxWPF
             Label label = (Label)selectedMailbox.Children[1];
             string labelStr = label.Content.ToString();
 
-            foreach(Mailbox m in mailBoxes)
+            foreach (Mailbox m in mailBoxes)
             {
-                if(m.name == labelStr)
+                if (m.name == labelStr)
                 {
                     currentUserPtr = m;
                     break;
@@ -146,7 +147,7 @@ namespace mailboxWPF
         }
 
 
-    
+
         private void LoadMail(Mail mail, Folder _folder, int number)
         {
             mailBoxes[number].AddMail(mail, _folder);
@@ -165,7 +166,7 @@ namespace mailboxWPF
             }
         }
 
-        
+
         private void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
@@ -195,10 +196,10 @@ namespace mailboxWPF
         {
             emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
-            
+
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
-        
+
         public void deleteEmail(int i)
         {
             if (currentFolderPointer != currentUserPtr.deleted)
@@ -299,23 +300,47 @@ namespace mailboxWPF
 
         private void ImportClick(object sender, RoutedEventArgs e)
         {
-            XmlSerializer desrializer = new XmlSerializer(typeof(Mailbox));
-            using (TextReader reader = new StreamReader(@"D:\_study\Maribor\WPF\data.xml"))
+            // create dialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+
+            openFileDialog.Title = "Importing";
+            //open Dialog with filters
+            openFileDialog.Filter = "XML files (*.XML)|*.XML";
+
+            if (openFileDialog.ShowDialog() == true)
             {
-                mailBoxes = (List<Mailbox>)desrializer.Deserialize(reader);
+
+
+                XmlSerializer desrializer = new XmlSerializer(typeof(List<Mailbox>));
+
+                string path = openFileDialog.FileName;
+                using (TextReader reader = new StreamReader(path))
+                {
+                    //put Deserialized data from reader to mialBoxes(list)
+                    mailBoxes = (List<Mailbox>)desrializer.Deserialize(reader);
+                }
             }
         }
 
         private void ExportClick(object sender, RoutedEventArgs e)
-        {         
-            XmlSerializer serialier = new XmlSerializer(typeof(List<Mailbox>));
+        {
+            SaveFileDialog openFileDialog = new SaveFileDialog();
 
-            string path = @"D:\_study\Maribor\WPF\data.xml";
+            openFileDialog.Title = "Export";           
+            openFileDialog.Filter = "XML files (*.XML)|*.XML";
 
-            using (Stream tw = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            if (openFileDialog.ShowDialog() == true)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Mailbox>));
-                serializer.Serialize(tw, mailBoxes);
+                string path = openFileDialog.FileName;
+
+                XmlSerializer serialier = new XmlSerializer(typeof(List<Mailbox>));
+
+                using (Stream tw = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Mailbox>));
+                    serializer.Serialize(tw, mailBoxes);
+                }
             }
         }
     }

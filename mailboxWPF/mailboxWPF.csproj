@@ -125,5 +125,9 @@
   <ItemGroup>
     <Folder Include="mainWindow\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\export.png" />
+    <Resource Include="resources\import.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
