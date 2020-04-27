@@ -18,8 +18,9 @@
         <Grid Background="#00ff85" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*" MinWidth="50" MaxWidth="50"/>
-                <ColumnDefinition Width="155*" MinWidth="50" MaxWidth="240" />
-                <ColumnDefinition Width="256*" MinWidth="150" MaxWidth="300"/>
+                <ColumnDefinition Width="83*" MinWidth="50" MaxWidth="240" />
+                <ColumnDefinition Width="64*"/>
+                <ColumnDefinition Width="264*" MinWidth="150" MaxWidth="300"/>
                 <ColumnDefinition Width="333*" MinWidth="200"/>
             </Grid.ColumnDefinitions>
 
@@ -32,7 +33,7 @@
             </Grid.RowDefinitions>
 
 
-            <Menu Grid.ColumnSpan="4" Margin="20,8,19.6,9.8" FontSize="15" Background="#ffffff" BorderThickness="0" >
+            <Menu Grid.ColumnSpan="5" Margin="20,8,19.6,9.8" FontSize="15" Background="#ffffff" BorderThickness="0" >
                 <MenuItem Header="File" Background="#ffffff" Height="43" RenderTransformOrigin="0.567,1.008" Width="37" FontSize="17">
                     <MenuItem Header="New message" Click="SendMessageWindow_MouseDoubleClick">
                         <MenuItem.Icon>
@@ -46,10 +47,25 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+
+                <MenuItem Header="Data" Background="#ffffff" Height="43" RenderTransformOrigin="0.567,1.008" Width="57" FontSize="17">
+                    <MenuItem Header="Import" Click="ImportClick">
+                        <MenuItem.Icon>
+                            <Image Source="resources/mail.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Header="Expoty" Click="ExportClick">
+                        <MenuItem.Icon>
+                            <Image Source="resources/logout.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
             </Menu>
 
 
-            <ToolBar Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="0.4,8,144.6,0" HorizontalAlignment="Stretch" Background="#FFFFFF" Height="43" Grid.Column="1">
+            <ToolBar Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="0.2,10,19.6,0" HorizontalAlignment="Stretch" Background="#FFFFFF" Height="41" Grid.Column="2">
                 <Button x:Name="replayButton" Width="120" Height="35" HorizontalAlignment="Left" Background="#FFFFFF" Margin="10,0,10,0" Click="replayButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="resources/replay.png" Height="20" RenderTransformOrigin="0.427,1.07"/>
@@ -84,24 +100,24 @@
 
 
 
-            <Label Grid.Row="1" Grid.Column="0" Margin="15,0.2,0.8,1.2" Background="#FFA0E7CE" Grid.ColumnSpan="2">E-mails</Label>
-            <ListView Grid.Row="1" Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <Label Grid.Row="1" Grid.Column="0" Margin="15,0.2,0.8,1.2" Background="#FFA0E7CE" Grid.ColumnSpan="3">E-mails</Label>
+            <ListView Grid.Row="1" Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="3">
 
             </ListView>
 
 
 
-            <StackPanel Grid.Row="1"  Grid.Column="2" Margin="20.2,0.2,1.8,0" Grid.RowSpan="3">
+            <StackPanel Grid.Row="1"  Grid.Column="3" Margin="20.2,0.2,1.8,0" Grid.RowSpan="3">
                 <TreeView  Name="MailBoxesTree">
-                    
+
                 </TreeView>
             </StackPanel>
 
-            
 
-            <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="3" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
-            <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="3" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
-            <TextBlock x:Name="emailContent" Background="#FFFFFF" Grid.Row="3" Grid.Column="3" Margin="17.6,5.8,14,0" TextWrapping="Wrap" UseLayoutRounding="False"  />
+
+            <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="4" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
+            <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="4" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
+            <TextBlock x:Name="emailContent" Background="#FFFFFF" Grid.Row="3" Grid.Column="4" Margin="17.6,6.2,13.2,12.4" TextWrapping="Wrap" UseLayoutRounding="False" Grid.RowSpan="2"  />
 
 
 

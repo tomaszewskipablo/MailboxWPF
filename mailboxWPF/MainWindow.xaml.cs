@@ -294,5 +294,15 @@ namespace mailboxWPF
             }
 
         }
+
+        private void ImportClick(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
+
+        private void ExportClick(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
     }
 }
