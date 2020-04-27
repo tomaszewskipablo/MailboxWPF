@@ -31,7 +31,7 @@ namespace mailboxWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Mailbox> mailBoxes;
+        public List<Mailbox> mailBoxes;
 
 
         public List<Mail> currentFolderPointer;

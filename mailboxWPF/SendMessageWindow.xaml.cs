@@ -30,8 +30,13 @@ namespace mailboxWPF
             this.mainWindow = mainWindow;
             InitializeComponent();
 
-            //author.Items.Add(mainWindow.user1.name);
-            //author.Items.Add(mainWindow.user2.name);  
+            // set e-mail users anme in author combobox
+            foreach (Mailbox m in mainWindow.mailBoxes)
+            {
+                author.Items.Add(m.name);
+            }
+            author.SelectedIndex=0;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
