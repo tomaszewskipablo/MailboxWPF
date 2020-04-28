@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,20 +11,20 @@ namespace mailboxWPF
     public class Mailbox
     {
         public string name { get; set; }
-        public List<Mail> inbox;
-        public List<Mail> spam;
-        public List<Mail> sent;
-        public List<Mail> deleted;
+        public ObservableCollection<Mail> inbox;
+        public ObservableCollection<Mail> spam;
+        public ObservableCollection<Mail> sent;
+        public ObservableCollection<Mail> deleted;
 
 
         Mailbox() { }
         public Mailbox(string name)
         {
             this.name = name;
-            inbox = new List<Mail>();
-            spam = new List<Mail>();
-            sent = new List<Mail>();
-            deleted = new List<Mail>();
+            inbox = new ObservableCollection<Mail>();
+            spam = new ObservableCollection<Mail>();
+            sent = new ObservableCollection<Mail>();
+            deleted = new ObservableCollection<Mail>();
         }
         public void AddMail(Mail mail, Folder folder)
         {

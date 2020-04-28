@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 public enum Folder
 {
@@ -24,24 +26,24 @@ public enum Folder
     deleted = 3,
 }
 
-namespace mailboxWPF
+namespace mailboxWPF 
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public List<Mailbox> mailBoxes;
+        public ObservableCollection<Mailbox> mailBoxes;
 
 
-        public List<Mail> currentFolderPointer;
+        public ObservableCollection<Mail> currentFolderPointer;
         public Mailbox currentUserPtr;
 
 
         public MainWindow()
         {
             InitializeComponent();
-            mailBoxes = new List<Mailbox>();
+            mailBoxes = new ObservableCollection<Mailbox>();
         }
         private void CreateTreeViewFromMailBox()
         {
@@ -296,13 +298,13 @@ namespace mailboxWPF
             {
 
 
-                XmlSerializer desrializer = new XmlSerializer(typeof(List<Mailbox>));
+                XmlSerializer desrializer = new XmlSerializer(typeof(ObservableCollection<Mailbox>));
 
                 string path = openFileDialog.FileName;
                 using (TextReader reader = new StreamReader(path))
                 {
                     //put Deserialized data from reader to mialBoxes(list)
-                    mailBoxes = (List<Mailbox>)desrializer.Deserialize(reader);
+                    mailBoxes = (ObservableCollection<Mailbox>)desrializer.Deserialize(reader);
                 }
             }
 
