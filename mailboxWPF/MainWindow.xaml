@@ -104,6 +104,17 @@
 
 
             <ListView Grid.Row="1" x:Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="3">
+               
+                <!--for addding event for every item in listView-->
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseLeftButtonUp" Handler="MailInListView_MouseLeftButtonUp" />
+                        <!--<EventSetter Event="MouseDoubleClick" Handler="Mail_DoubleClick" />-->
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <!--for addding event for every item in listView-->
+
+                <!--BINDING-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid x:Name="Item">
@@ -120,6 +131,8 @@
                             <TextBlock Grid.Row="1" Text="{Binding Author}"/>
                             <TextBlock Grid.Row="2" Text="{Binding Date}"/>
                         </Grid>
+                        <!--BINDING-->
+                        
                         <!--for marking seen messages-->
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding Seen}" Value="True">
@@ -127,6 +140,7 @@
                             </DataTrigger>
                         </DataTemplate.Triggers>
                         <!--for marking seen messages-->
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

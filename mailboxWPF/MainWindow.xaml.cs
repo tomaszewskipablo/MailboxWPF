@@ -39,6 +39,11 @@ namespace mailboxWPF
         public ObservableCollection<Mail> currentFolderPointer;
         public Mailbox currentUserPtr;
 
+        public event PropertyChangedEventHandler PropertyChanged; 
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e); 
+        }
 
         public MainWindow()
         {
@@ -179,12 +184,7 @@ namespace mailboxWPF
             }
         }
 
-        private void Item_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
-            emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
-            emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
-        }
+
 
         public void deleteEmail(int i)
         {
@@ -330,6 +330,15 @@ namespace mailboxWPF
                     serializer.Serialize(tw, mailBoxes);
                 }
             }
+        }
+
+
+        private void MailInListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            currentFolderPointer[listView.SelectedIndex].Seen = true;
+            emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
+            emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
+            emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
     }
 }
