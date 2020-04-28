@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 using Microsoft.Win32;
 using System.IO;
 
@@ -34,9 +33,8 @@ namespace mailboxWPF
             foreach (Mailbox m in mainWindow.mailBoxes)
             {
                 author.Items.Add(m.name);
-            }
-            author.SelectedIndex=0;
-            
+                author.SelectedIndex = 0;
+            }            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -115,6 +113,18 @@ namespace mailboxWPF
             {
                 textBox.Text = string.Empty;
                 textBox.GotFocus -= ClearText;
+            }
+        }
+
+        private void content_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                var sb = new StringBuilder();
+                sb.Append(content.Text);
+                sb.AppendLine("");
+                content.Text = sb.ToString();
+                content.CaretIndex = content.Text.Length;
             }
         }
     }

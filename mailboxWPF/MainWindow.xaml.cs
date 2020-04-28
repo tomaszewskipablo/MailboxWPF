@@ -143,16 +143,7 @@ namespace mailboxWPF
         }
         private void MailsToListView()
         {
-            listView.Items.Clear();
-            for (int i = 0; i < currentFolderPointer.Count; i++)
-            {
-                ListViewItem item = new ListViewItem();
-                item.Content = currentFolderPointer[i].Topic;
-                item.MouseLeftButtonUp += Item_MouseLeftButtonUp;
-                item.MouseDoubleClick += Item_MouseDoubleClick;
-
-                listView.Items.Add(item);
-            }
+            listView.ItemsSource = currentFolderPointer;
         }
 
 
@@ -166,14 +157,19 @@ namespace mailboxWPF
             sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
             sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
 
+            for (int i = 0; i < currentFolderPointer[selectedMail].attachments.Count; i++)
+            {
+                sendMessageWindow.addedAtachements.Items.Add(currentFolderPointer[selectedMail].attachments[i]);
+            }
             sendMessageWindow.subject.IsReadOnly = true;
-            sendMessageWindow.author.IsReadOnly = true;
+            //sendMessageWindow.author.IsEnabled = false;
             sendMessageWindow.recipient.IsReadOnly = true;
             sendMessageWindow.content.IsReadOnly = true;
             sendMessageWindow.copyRecipient.Text = "";
             sendMessageWindow.copyRecipient.IsReadOnly = true;
             sendMessageWindow.addAtachement.IsEnabled = false;
             sendMessageWindow.sendButton.IsEnabled = false;
+
 
             if (sendMessageWindow.ShowDialog() == true)
             {
@@ -185,7 +181,6 @@ namespace mailboxWPF
         {
             emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
-
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
 
@@ -233,8 +228,8 @@ namespace mailboxWPF
 
         public void SendMessageWindow_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
 
+            SendMessageWindow sendMessageWindow = new SendMessageWindow(this);            
 
             if (sendMessageWindow.ShowDialog() == true)
             {

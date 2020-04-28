@@ -101,8 +101,27 @@
 
 
             <Label Grid.Row="1" Grid.Column="0" Margin="15,0.2,0.8,1.2" Background="#FFA0E7CE" Grid.ColumnSpan="3">E-mails</Label>
-            <ListView Grid.Row="1" Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="3">
 
+
+            <ListView Grid.Row="1" x:Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="3">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="Item">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock  Text="{Binding Topic}" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Author}"/>
+                            <TextBlock Grid.Row="2" Text="{Binding Date}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
 
 
@@ -115,8 +134,8 @@
 
 
 
-            <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="4" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE">Final grade</Label>
-            <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="4" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2">Ales.Brezt@student.um.si</Label>
+            <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="4" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE"></Label>
+            <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="4" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2"></Label>
             <TextBlock x:Name="emailContent" Background="#FFFFFF" Grid.Row="3" Grid.Column="4" Margin="17.6,6.2,13.2,12.4" TextWrapping="Wrap" UseLayoutRounding="False" Grid.RowSpan="2"  />
 
 

@@ -11,11 +11,13 @@ namespace mailboxWPF
     [Serializable()]
     public class Mail : ISerializable
     {
-        public string Topic;
-        public string Author;
-        public string Receiver;
-        public string CopyReceiver;
-        public string Content;
+        public String Topic { get; set; }
+        public String Author { get; set; }
+        public String Receiver { get; set; }
+        public String CopyReceiver { get; set; }
+        public String Content { get; set; }
+        public DateTime Date { get; set; }
+
         public List<string> attachments;
 
         Mail() { }
@@ -46,6 +48,7 @@ namespace mailboxWPF
             info.AddValue("Receiver", Receiver);
             info.AddValue("CopyReceiver", CopyReceiver);
             info.AddValue("Content", Content);
+            info.AddValue("Date", Date);
         }
         public Mail(SerializationInfo info, StreamingContext context)
         {
@@ -54,6 +57,7 @@ namespace mailboxWPF
             this.Receiver = (string)info.GetValue("Receiver", typeof(string));
             this.CopyReceiver = (string)info.GetValue("CopyReceiver", typeof(string));
             this.Content = (string)info.GetValue("Content", typeof(string));
+            this.Date = (DateTime)info.GetValue("Date", typeof(DateTime));
         }
     }
 }
