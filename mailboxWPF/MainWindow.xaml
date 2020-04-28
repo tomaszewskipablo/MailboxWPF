@@ -120,6 +120,13 @@
                             <TextBlock Grid.Row="1" Text="{Binding Author}"/>
                             <TextBlock Grid.Row="2" Text="{Binding Date}"/>
                         </Grid>
+                        <!--for marking seen messages-->
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Seen}" Value="True">
+                                <Setter TargetName="Item"  Property="Background" Value="#EEEEEE"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                        <!--for marking seen messages-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

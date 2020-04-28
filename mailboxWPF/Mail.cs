@@ -17,6 +17,7 @@ namespace mailboxWPF
         public String CopyReceiver { get; set; }
         public String Content { get; set; }
         public DateTime Date { get; set; }
+        public bool Seen { get; set; }
 
         public List<string> attachments;
 
@@ -49,6 +50,7 @@ namespace mailboxWPF
             info.AddValue("CopyReceiver", CopyReceiver);
             info.AddValue("Content", Content);
             info.AddValue("Date", Date);
+            info.AddValue("Date", Seen);
         }
         public Mail(SerializationInfo info, StreamingContext context)
         {
@@ -58,6 +60,7 @@ namespace mailboxWPF
             this.CopyReceiver = (string)info.GetValue("CopyReceiver", typeof(string));
             this.Content = (string)info.GetValue("Content", typeof(string));
             this.Date = (DateTime)info.GetValue("Date", typeof(DateTime));
+            this.Seen = (bool)info.GetValue("Seen", typeof(bool));
         }
     }
 }
