@@ -31,7 +31,7 @@ namespace mailboxWPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
         public ObservableCollection<Mailbox> mailBoxes;
 
@@ -39,11 +39,7 @@ namespace mailboxWPF
         public ObservableCollection<Mail> currentFolderPointer;
         public Mailbox currentUserPtr;
 
-        public event PropertyChangedEventHandler PropertyChanged; 
-        public void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            PropertyChanged?.Invoke(this, e); 
-        }
+        
 
         public MainWindow()
         {
@@ -336,6 +332,8 @@ namespace mailboxWPF
         private void MailInListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             currentFolderPointer[listView.SelectedIndex].Seen = true;
+            
+            // display mail in mail preview (right side)
             emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
             emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;

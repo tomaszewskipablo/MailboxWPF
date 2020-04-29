@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -9,15 +10,79 @@ using System.Windows.Controls;
 namespace mailboxWPF
 {
     [Serializable()]
-    public class Mail : ISerializable
+    public class Mail : ISerializable, INotifyPropertyChanged
     {
-        public String Topic { get; set; }
-        public String Author { get; set; }
-        public String Receiver { get; set; }
-        public String CopyReceiver { get; set; }
-        public String Content { get; set; }
-        public DateTime Date { get; set; }
-        public bool Seen { get; set; }
+        private String _topic;
+        private String _author;
+        private String _receiver;
+        private String _copyReceiver;
+        private String _content;
+        private DateTime _date;
+        private bool _seen;
+
+        public String Topic
+        {
+            get { return _topic; }
+            set
+            {
+                _topic = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Topic"));
+            }
+        }
+        public String Author
+        {
+            get { return _author; }
+            set
+            {
+                _author = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Author"));
+            }
+        }
+        public String Receiver
+        {
+            get { return _receiver; }
+            set
+            {
+                _receiver = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Receiver"));
+            }
+        }
+        public String CopyReceiver
+        {
+            get { return _copyReceiver; }
+            set
+            {
+                _copyReceiver = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("CopyReceiver"));
+            }
+        }
+        public String Content
+        {
+            get { return _content; }
+            set
+            {
+                _content = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Content"));
+            }
+        }
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Date"));
+            }
+        }
+        public bool Seen
+        {
+            get { return _seen; }
+            set
+            {
+                _seen = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Seen"));
+            }
+        }
 
         public List<string> attachments;
 
@@ -61,6 +126,12 @@ namespace mailboxWPF
             this.Content = (string)info.GetValue("Content", typeof(string));
             this.Date = (DateTime)info.GetValue("Date", typeof(DateTime));
             this.Seen = (bool)info.GetValue("Seen", typeof(bool));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
         }
     }
 }

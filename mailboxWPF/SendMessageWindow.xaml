@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mailboxWPF"
         mc:Ignorable="d"
-        Title="SendMessageWindow" Height="450" Width="500">
+        Title="SendMessageWindow" Height="613.2" Width="754.165">
     <Grid Background="#333333">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
@@ -35,7 +35,7 @@
 
 
         <ListBox x:Name="addedAtachements" Background="#FFA0E7CE" Margin="10.2,9.8,9.6,9.6" Grid.Row="4" Grid.Column="1">
-            
+
         </ListBox>
 
         <Button x:Name="sendButton" Background="#FFA0E7CE" Margin="10.2,10.4,9.6,10" Grid.Row="5" Grid.Column="1" Click="Button_Click">Send</Button>
