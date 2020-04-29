@@ -23,7 +23,19 @@ namespace mailboxWPF
         public Editor()
         {
             InitializeComponent();
+            AddFontsTofontSizeCombobox();
         }
-
+        private void AddFontsTofontSizeCombobox()
+        {
+            fontSizeCombobox.Items.Add(8);
+            fontSizeCombobox.Items.Add(10);
+            fontSizeCombobox.Items.Add(12);
+            fontSizeCombobox.Items.Add(14);
+            fontSizeCombobox.Items.Add(16);
+            fontSizeCombobox.Items.Add(18);
+            fontSizeCombobox.Items.Add(20);
+            fontSizeCombobox.Items.Add(22);
+            fontSizeCombobox.Items.Add(24);
+        }
     }
 }

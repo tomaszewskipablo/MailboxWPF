@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mailboxWPF"
         mc:Ignorable="d"
-        Title="SendMessageWindow" Height="613.2" Width="754.165">
+        Title="SendMessageWindow" Height="626.4" Width="803.365">
     <Grid Background="#333333">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
