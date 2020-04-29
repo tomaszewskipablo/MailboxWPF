@@ -34,7 +34,7 @@ namespace mailboxWPF
             {
                 author.Items.Add(m.name);
                 author.SelectedIndex = 0;
-            }            
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -44,9 +44,9 @@ namespace mailboxWPF
                 string receiverStr = recipient.Text;
                 string authorStr = author.Text;
                 string topicStr = subject.Text;
-                string contentStr = content.Text;
+                string contentStr = ConvertRichTextBoxContentsToString(content.Content);
 
-                
+
                 Mail mail = new Mail(topicStr, authorStr, receiverStr, contentStr);
 
                 for (int i = 0; i < addedAtachements.Items.Count; i++)
@@ -55,56 +55,61 @@ namespace mailboxWPF
                     string attachemnt = addedAtachements.Items[i].ToString();
                     mail.attachments.Add(attachemnt);
                 }
-                
 
 
-                if (mainWindow.currentUserPtr.name == authorStr)
+                if (authorStr  != "")
                 {
-                    mainWindow.currentUserPtr.sent.Add(mail);
-                }
+                    if (mainWindow.currentUserPtr.name == authorStr)
+                    {
+                        mainWindow.currentUserPtr.sent.Add(mail);
+                    }
 
-                if (mainWindow.currentUserPtr.name == receiverStr)
+                    foreach (Mailbox m in mainWindow.mailBoxes)
+                    {
+                        if (m.name == receiverStr)
+                        {
+                            m.inbox.Add(mail);
+                        }
+
+                        if (m.name == copyRecipient.Text)
+                        {
+                            m.inbox.Add(mail);
+                        }
+                    }
+                    this.Close();
+                }
+                else
                 {
-                    mainWindow.currentUserPtr.inbox.Add(mail);
+                    MessageBox.Show("Fill recipient and subject fields to send the message", "Error");
                 }
-
-                if (mainWindow.currentUserPtr.name == copyRecipient.Text)
-                {
-                    mainWindow.currentUserPtr.inbox.Add(mail);
-                }
-
-                this.Close();
             }
-            else
-            {
-                MessageBox.Show("Fill recipient and subject fields to send the message", "Error");
-            }
+
         }
 
-            private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.Multiselect = true;
+            dlg.Title = "Select Attachments";
+
+            // .jpg, .png, .gif, .bmp, .wmv, .mp3, .mpg, .mpeg, and all files
+            var imageFilter = "Image(*.JPG; *.PNG; *.GIF; *.BMP)| *.JPG; *.PNG; *.GIF; *.BMP |";
+            var videoFilter = "Video(*.WMV;*.MPG;*.MPEG)| *.WMV;*.MPG;*.MPEG |";
+            var audioFilter = "Audio(*.MP3)| *.MP3 |";
+            dlg.Filter = imageFilter + videoFilter + audioFilter + "All files (*.*)|*.*";
+
+            if (dlg.ShowDialog() == true)
             {
-                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-                dlg.Multiselect = true;
-                dlg.Title = "Select Attachments";
-
-                // .jpg, .png, .gif, .bmp, .wmv, .mp3, .mpg, .mpeg, and all files
-                var imageFilter = "Image(*.JPG; *.PNG; *.GIF; *.BMP)| *.JPG; *.PNG; *.GIF; *.BMP |";
-                var videoFilter = "Video(*.WMV;*.MPG;*.MPEG)| *.WMV;*.MPG;*.MPEG |";
-                var audioFilter = "Audio(*.MP3)| *.MP3 |";
-                dlg.Filter = imageFilter + videoFilter + audioFilter + "All files (*.*)|*.*";
-
-                if (dlg.ShowDialog() == true)
+                foreach (String path in dlg.FileNames)
                 {
-                    foreach (String path in dlg.FileNames)
-                    {
                     // get file extensions  
                     string fileName = System.IO.Path.GetFileName(path);
                     addedAtachements.Items.Add(fileName);
-                    }
                 }
+            }
             // make attachment list visible
             addedAtachements.Visibility = Visibility.Visible;
-            }
+        }
 
         private void ClearText(object sender, RoutedEventArgs e)
         {
@@ -115,16 +120,22 @@ namespace mailboxWPF
                 textBox.GotFocus -= ClearText;
             }
         }
-
-        private void content_KeyDown(object sender, KeyEventArgs e)
+        string ConvertRichTextBoxContentsToString(RichTextBox rtb)
         {
-            if (e.Key == Key.Return)
+            TextRange textRange = new TextRange(rtb.Document.ContentStart,
+                rtb.Document.ContentEnd);
+
+            return textRange.Text;
+        }
+
+        private void author_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Mailbox m in mainWindow.mailBoxes)
             {
-                var sb = new StringBuilder();
-                sb.Append(content.Text);
-                sb.AppendLine("");
-                content.Text = sb.ToString();
-                content.CaretIndex = content.Text.Length;
+                if (m.name == author.SelectedItem.ToString())
+                {
+                    mainWindow.currentUserPtr = m;
+                }
             }
         }
     }

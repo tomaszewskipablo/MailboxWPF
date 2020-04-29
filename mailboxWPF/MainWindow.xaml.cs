@@ -158,7 +158,7 @@ namespace mailboxWPF
             sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
             sendMessageWindow.author.Text = currentFolderPointer[selectedMail].Author;
             sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
-            sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
+            sendMessageWindow.content.Content.AppendText(currentFolderPointer[selectedMail].Content);
 
             for (int i = 0; i < currentFolderPointer[selectedMail].attachments.Count; i++)
             {
@@ -167,7 +167,7 @@ namespace mailboxWPF
             sendMessageWindow.subject.IsReadOnly = true;
             //sendMessageWindow.author.IsEnabled = false;
             sendMessageWindow.recipient.IsReadOnly = true;
-            sendMessageWindow.content.IsReadOnly = true;
+            sendMessageWindow.content.Content.IsReadOnly = true;
             sendMessageWindow.copyRecipient.Text = "";
             sendMessageWindow.copyRecipient.IsReadOnly = true;
             sendMessageWindow.addAtachement.IsEnabled = false;
@@ -266,7 +266,7 @@ namespace mailboxWPF
 
                 int selectedMail = this.listView.SelectedIndex;
                 sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
-                sendMessageWindow.content.Text = currentFolderPointer[selectedMail].Content;
+                sendMessageWindow.content.Content.AppendText(currentFolderPointer[selectedMail].Content);
 
                 if (sendMessageWindow.ShowDialog() == true)
                 {
