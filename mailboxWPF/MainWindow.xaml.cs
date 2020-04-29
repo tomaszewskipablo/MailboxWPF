@@ -238,23 +238,64 @@ namespace mailboxWPF
 
         private void replayButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (currentFolderPointer == currentUserPtr.deleted || currentFolderPointer == currentUserPtr.spam || currentFolderPointer == currentUserPtr.inbox)
+            if (currentUserPtr != null && this.listView.SelectedIndex != -1)
             {
-                SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
-
-                int selectedMail = this.listView.SelectedIndex;
-                sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Author;
-
-                if (sendMessageWindow.ShowDialog() == true)
+                if (currentFolderPointer == currentUserPtr.deleted || currentFolderPointer == currentUserPtr.spam || currentFolderPointer == currentUserPtr.inbox)
                 {
-                    // text = dw.textbox.Text;
+                    SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
+
+                    int selectedMail = this.listView.SelectedIndex;
+                    sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Author;
+
+                    if (sendMessageWindow.ShowDialog() == true)
+                    {
+                        // text = dw.textbox.Text;
+                    }
+                }
+                else if (currentFolderPointer == currentUserPtr.sent)
+                {
+                    MessageBox.Show("You cannot replay for your own email", "Error");
+                }
+                else
+                {
+                    MessageBox.Show("Choose email to replay", "Error");
                 }
             }
 
             else
             {
-                MessageBox.Show("You cannot replay for your own email", "Error");
+                MessageBox.Show("Choose email to replay", "Error");
+            }
+        }
+        private void ReplayToAll_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentUserPtr != null && this.listView.SelectedIndex != -1)
+            {
+                if (currentFolderPointer == currentUserPtr.inbox || currentFolderPointer == currentUserPtr.spam || currentFolderPointer == currentUserPtr.deleted)
+                {
+                    SendMessageWindow sendMessageWindow = new SendMessageWindow(this);
+
+                    int selectedMail = this.listView.SelectedIndex;
+                    sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
+                    sendMessageWindow.copyRecipient.Text = currentFolderPointer[selectedMail].CopyReceiver;
+
+                    if (sendMessageWindow.ShowDialog() == true)
+                    {
+                        // text = dw.textbox.Text;
+                    }
+                }
+                else if (currentFolderPointer == currentUserPtr.sent)
+                {
+                    MessageBox.Show("You cannot replay for your own email", "Error");
+                }
+                else
+                {
+                    MessageBox.Show("Choose email to replay", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Choose email to replay", "Error");
             }
         }
 

@@ -83,7 +83,6 @@ namespace mailboxWPF
                     MessageBox.Show("Fill recipient and subject fields to send the message", "Error");
                 }
             }
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
