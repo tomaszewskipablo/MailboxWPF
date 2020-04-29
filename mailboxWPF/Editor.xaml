@@ -11,11 +11,11 @@
             <ColumnDefinition Width="157*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="81*"/>
-            <RowDefinition Height="400*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Expander Header="Expander" Margin="0,0,-0.4,399.8" Grid.RowSpan="2">
+        <Expander Header="Expander">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -26,7 +26,7 @@
                         <Button Content="B" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35" FontWeight="Bold" FontSize="24"/>
                         <Button Content="I" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35" FontStyle="Italic" FontSize="24"/>
                         <Button Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35">
-                            <Image Source="resources/underline.png" Height="24" Margin="0,6,0,0" RenderTransformOrigin="0.427,1.07" Width="17"/>
+                            <Image Source="resources/underline.png" Height="24" Margin="0,6,0,0" Width="17"/>
                         </Button>
                     </StackPanel>
 
@@ -50,7 +50,7 @@
         </Expander>
 
 
-        <RichTextBox x:Name="Content" HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Margin="10,3.2,0,-3.2" Width="478" Grid.Row="1" >
+        <RichTextBox x:Name="Content" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Margin="10,4,10,10" Width="478" Grid.Row="1" >
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
