@@ -38,6 +38,10 @@ namespace mailboxWPF
             fontSizeCombobox.Items.Add(22);
             fontSizeCombobox.Items.Add(24);
         }
-        
+
+        private void fontSizeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Content.Selection.ApplyPropertyValue(RichTextBox.FontSizeProperty, Convert.ToDouble(fontSizeCombobox.SelectedItem));
+        }
     }
 }
