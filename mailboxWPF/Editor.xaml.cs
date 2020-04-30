@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace mailboxWPF
 {
     /// <summary>
@@ -37,5 +38,6 @@ namespace mailboxWPF
             fontSizeCombobox.Items.Add(22);
             fontSizeCombobox.Items.Add(24);
         }
+        
     }
 }
