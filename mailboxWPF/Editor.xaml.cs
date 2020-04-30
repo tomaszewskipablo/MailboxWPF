@@ -63,7 +63,14 @@ namespace mailboxWPF
 
         private void bold_Click(object sender, RoutedEventArgs e)
         {
-            Content.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Bold);
+            if (Content.Selection.GetPropertyValue(RichTextBox.FontWeightProperty).Equals(FontWeights.Normal))
+            {
+                Content.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Bold);
+            }
+            else
+            {
+                Content.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Normal);
+            }
         }
     }
 }
