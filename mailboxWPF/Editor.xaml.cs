@@ -24,7 +24,19 @@ namespace mailboxWPF
         public Editor()
         {
             InitializeComponent();
-            AddFontsTofontSizeCombobox();
+            AddFontsSizeTofontSizeCombobox();
+        }
+        private void AddFontsSizeTofontSizeCombobox()
+        {
+            fontSizeCombobox.Items.Add(8);
+            fontSizeCombobox.Items.Add(10);
+            fontSizeCombobox.Items.Add(12);
+            fontSizeCombobox.Items.Add(14);
+            fontSizeCombobox.Items.Add(16);
+            fontSizeCombobox.Items.Add(18);
+            fontSizeCombobox.Items.Add(20);
+            fontSizeCombobox.Items.Add(22);
+            fontSizeCombobox.Items.Add(24);
         }
         private void AddFontsTofontSizeCombobox()
         {
@@ -42,6 +54,11 @@ namespace mailboxWPF
         private void fontSizeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Content.Selection.ApplyPropertyValue(RichTextBox.FontSizeProperty, Convert.ToDouble(fontSizeCombobox.SelectedItem));
+        }
+
+        private void fontFamilyCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Content.Selection.ApplyPropertyValue(RichTextBox.FontFamilyProperty, fontFamilyCombobox.SelectedItem);
         }
     }
 }

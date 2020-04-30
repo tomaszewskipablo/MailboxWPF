@@ -38,8 +38,15 @@
 
                     <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0,0,0,4.2">
                         <Label Content="Font-familly" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="auto" Height="auto" FontSize="14"/>
-                        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="82" Grid.Column="1" Height="22"/>
+                        <ComboBox x:Name="fontFamilyCombobox" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" SelectionChanged="fontFamilyCombobox_SelectionChanged"/>
+                        <!--<ComboBox x:Name="fontFamilyCombobox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="82" Grid.Column="1" Height="22"/>-->
                     </StackPanel>
+
+
+
+
+
+                    
 
                     <StackPanel Orientation="Vertical" Grid.Column="1" Margin="15,0,0,0.2">
                         <Button Content="Clear formating"  HorizontalAlignment="center" VerticalAlignment="Center" Width="98"  Height="auto" Margin="18.8,10,18.6,9.6"/>
