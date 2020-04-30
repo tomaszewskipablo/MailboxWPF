@@ -24,9 +24,9 @@
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
-                        <Button Content="B" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35" FontWeight="Bold" FontSize="24"/>
-                        <Button Content="I" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35" FontStyle="Italic" FontSize="24"/>
-                        <Button Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35">
+                        <Button x:Name="bold" Content="B" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35" FontWeight="Bold" FontSize="24" Click="bold_Click"/>
+                        <Button x:Name="incline" Content="I" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35" FontStyle="Italic" FontSize="24"/>
+                        <Button x:Name="underline" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" Height="35">
                             <Image Source="resources/underline.png" Height="24" Margin="0,6,0,0" Width="17"/>
                         </Button>
                     </StackPanel>

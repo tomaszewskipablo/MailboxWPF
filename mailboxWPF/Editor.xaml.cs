@@ -60,5 +60,10 @@ namespace mailboxWPF
         {
             Content.Selection.ApplyPropertyValue(RichTextBox.FontFamilyProperty, fontFamilyCombobox.SelectedItem);
         }
+
+        private void bold_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Bold);
+        }
     }
 }
