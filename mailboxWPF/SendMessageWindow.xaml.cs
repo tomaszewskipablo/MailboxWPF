@@ -113,15 +113,6 @@ namespace mailboxWPF
             addedAtachements.Visibility = Visibility.Visible;
         }
 
-        private void ClearText(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (!textBox.IsReadOnly)
-            {
-                textBox.Text = string.Empty;
-                textBox.GotFocus -= ClearText;
-            }
-        }
         string ConvertRichTextBoxContentsToString(RichTextBox rtb)
         {
             TextRange textRange = new TextRange(rtb.Document.ContentStart,

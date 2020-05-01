@@ -28,28 +28,40 @@
             </ComboBox>
         </StackPanel>
 
-
-        <xctk1:WatermarkTextBox  Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0" GotFocus="ClearText">
+        <!--Recipient TEXTBOX-->
+        <xctk1:WatermarkTextBox  Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0">
             <xctk1:WatermarkTextBox.Watermark>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="resources/inbox.png" Stretch="Fill" />
-                    <TextBlock x:Name="recipient" Text="Enter First Name" Margin="4,0,0,0" />
+                    <TextBlock x:Name="recipient" Text="Recipient" Margin="4,0,0,0" />
                 </StackPanel>
             </xctk1:WatermarkTextBox.Watermark>
             </xctk1:WatermarkTextBox>
+        <!--Recipient TEXTBOX-->
 
-
-        <xctk1:WatermarkTextBox  Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0" GotFocus="ClearText">
+        <!--Copy Recipient TEXTBOX-->
+        <xctk1:WatermarkTextBox  Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0">
             <xctk1:WatermarkTextBox.Watermark>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="resources/inbox.png" Stretch="Fill" />
-                    <TextBlock x:Name="copyRecipient" Text="Enter First Name" Margin="4,0,0,0" />
+                    <TextBlock x:Name="copyRecipient" Text="Copy recipient" Margin="4,0,0,0" />
                 </StackPanel>
             </xctk1:WatermarkTextBox.Watermark>
         </xctk1:WatermarkTextBox>
+        <!--Copy Recipient TEXTBOX-->
+
+        <!--Copy Recipient TEXTBOX-->
+        <xctk1:WatermarkTextBox Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0">
+            <xctk1:WatermarkTextBox.Watermark>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="resources/subject.png" Stretch="Fill" />
+                    <TextBlock x:Name="subject" Text="Subject" Margin="4,0,0,0" />
+                </StackPanel>
+            </xctk1:WatermarkTextBox.Watermark>
+        </xctk1:WatermarkTextBox>
+        <!--Copy Recipient TEXTBOX-->
+
         
-        
-        <TextBox x:Name="subject" Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0" GotFocus="ClearText">Subject</TextBox>
 
         <local:Editor x:Name="content" Margin="10,2.2,4.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2"></local:Editor>
         <!--<TextBox  x:Name="content" Margin="10,2.2,4.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" KeyDown="content_KeyDown"></TextBox>-->

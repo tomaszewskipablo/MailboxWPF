@@ -171,12 +171,13 @@ namespace mailboxWPF
             {
                 sendMessageWindow.addedAtachements.Items.Add(currentFolderPointer[selectedMail].attachments[i]);
             }
-            sendMessageWindow.subject.IsReadOnly = true;
+
             //sendMessageWindow.author.IsEnabled = false;
             //sendMessageWindow.recipient.IsReadOnly = true;
+            sendMessageWindow.recipient.IsEnabled = false;
             sendMessageWindow.content.Content.IsReadOnly = true;
             sendMessageWindow.copyRecipient.Text = "";
-            sendMessageWindow.copyRecipient.IsReadOnly = true;
+            
             sendMessageWindow.addAtachement.IsEnabled = false;
             sendMessageWindow.sendButton.IsEnabled = false;
 
