@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:mailboxWPF"
+        
+        xmlns:xctk="http://schemas/xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:mailboxWPF" xmlns:xctk1="http://schemas.xceed.com/wpf/xaml/toolkit"
+             
         mc:Ignorable="d"
         Title="SendMessageWindow" Height="626.4" Width="803.365">
     <Grid Background="#333333">
@@ -25,7 +28,16 @@
             </ComboBox>
         </StackPanel>
 
-        <TextBox x:Name="recipient" Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0" GotFocus="ClearText">Recipient</TextBox>
+
+        <xctk1:WatermarkTextBox  Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0" GotFocus="ClearText">
+            <xctk1:WatermarkTextBox.Watermark>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="resources/inbox.png" Stretch="Fill" />
+                    <TextBlock x:Name="recipient" Text="Enter First Name" Margin="4,0,0,0" />
+                </StackPanel>
+            </xctk1:WatermarkTextBox.Watermark>
+            </xctk1:WatermarkTextBox>
+            <!--<TextBox x:Name="recipient" Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0" GotFocus="ClearText">Recipient</TextBox>-->
         <TextBox x:Name="copyRecipient" Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0" GotFocus="ClearText">Copy recipient</TextBox>
         <TextBox x:Name="subject" Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0" GotFocus="ClearText">Subject</TextBox>
 

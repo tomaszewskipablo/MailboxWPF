@@ -155,7 +155,7 @@
 
             <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="4" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE"></Label>
             <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="4" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2"></Label>
-            <local:MessageViewer x:Name="emailContent" Grid.Row="3" Grid.Column="4" ></local:MessageViewer>
+            <local:MessageViewer x:Name="emailContent" Grid.Row="3" Grid.Column="4" IsEnabled="False" ></local:MessageViewer>
 
         </Grid>
     </Grid>

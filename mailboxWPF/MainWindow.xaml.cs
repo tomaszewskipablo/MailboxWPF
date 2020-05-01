@@ -173,7 +173,7 @@ namespace mailboxWPF
             }
             sendMessageWindow.subject.IsReadOnly = true;
             //sendMessageWindow.author.IsEnabled = false;
-            sendMessageWindow.recipient.IsReadOnly = true;
+            //sendMessageWindow.recipient.IsReadOnly = true;
             sendMessageWindow.content.Content.IsReadOnly = true;
             sendMessageWindow.copyRecipient.Text = "";
             sendMessageWindow.copyRecipient.IsReadOnly = true;
@@ -397,12 +397,10 @@ namespace mailboxWPF
             using (MemoryStream ms = new MemoryStream(byteArray))
             {
                 
-   TextRange tr = new TextRange(emailContent.content.Document.ContentStart, emailContent.content.Document.ContentEnd);
+                TextRange tr = new TextRange(emailContent.content.Document.ContentStart, emailContent.content.Document.ContentEnd);
                 tr.Load(ms, DataFormats.Rtf);
             }
-            //this.emailContent.Content.AppendText(currentFolderPointer[selectedMail].Content);
-            // emailContent.Text.Content.AppendText(currentFolderPointer[selectedMail].Content);
-            //emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
+
     }
 }
