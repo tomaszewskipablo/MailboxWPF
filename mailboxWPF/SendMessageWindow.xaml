@@ -37,8 +37,18 @@
                 </StackPanel>
             </xctk1:WatermarkTextBox.Watermark>
             </xctk1:WatermarkTextBox>
-            <!--<TextBox x:Name="recipient" Margin="10,2.2,4.8,5" Grid.Row="1" Grid.Column="0" GotFocus="ClearText">Recipient</TextBox>-->
-        <TextBox x:Name="copyRecipient" Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0" GotFocus="ClearText">Copy recipient</TextBox>
+
+
+        <xctk1:WatermarkTextBox  Margin="10,2.2,4.8,5" Grid.Row="2" Grid.Column="0" GotFocus="ClearText">
+            <xctk1:WatermarkTextBox.Watermark>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="resources/inbox.png" Stretch="Fill" />
+                    <TextBlock x:Name="copyRecipient" Text="Enter First Name" Margin="4,0,0,0" />
+                </StackPanel>
+            </xctk1:WatermarkTextBox.Watermark>
+        </xctk1:WatermarkTextBox>
+        
+        
         <TextBox x:Name="subject" Margin="10,2.2,4.8,5" Grid.Row="3" Grid.Column="0" GotFocus="ClearText">Subject</TextBox>
 
         <local:Editor x:Name="content" Margin="10,2.2,4.8,10" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2"></local:Editor>
