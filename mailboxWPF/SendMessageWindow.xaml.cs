@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
-
+using System.Collections.ObjectModel;
 
 namespace mailboxWPF
 {
@@ -62,6 +62,7 @@ namespace mailboxWPF
                     if (mainWindow.currentUserPtr.name == authorStr)
                     {
                         mainWindow.currentUserPtr.sent.Add(mail);
+                        SaveEditor(mainWindow.currentUserPtr.sent);
                     }
 
                     foreach (Mailbox m in mainWindow.mailBoxes)
@@ -69,6 +70,8 @@ namespace mailboxWPF
                         if (m.name == receiverStr)
                         {
                             m.inbox.Add(mail);
+
+                            
                         }
 
                         if (m.name == copyRecipient.Text)
@@ -131,11 +134,15 @@ namespace mailboxWPF
         {
             foreach (Mailbox m in mainWindow.mailBoxes)
             {
-                if (m.name == author.SelectedItem.ToString())
+                if (m.name == author.SelectionBoxItem.ToString())
                 {
                     mainWindow.currentUserPtr = m;
                 }
             }
+        }
+        private void SaveEditor(ObservableCollection<Mail> folder)
+        {
+                 folder.Last().ContentRTF = content.save();
         }
     }
 }

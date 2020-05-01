@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace mailboxWPF
 {
@@ -19,6 +20,7 @@ namespace mailboxWPF
         private String _content;
         private DateTime _date;
         private bool _seen;
+        private string _contentRTF;
 
         public String Topic
         {
@@ -83,6 +85,15 @@ namespace mailboxWPF
                 OnPropertyChanged(new PropertyChangedEventArgs("Seen"));
             }
         }
+        public string ContentRTF
+        {
+            get { return _contentRTF; }
+            set
+            {
+                _contentRTF = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("ContentRTF"));
+            }
+        }
 
         public List<string> attachments;
 
@@ -126,6 +137,7 @@ namespace mailboxWPF
             this.Content = (string)info.GetValue("Content", typeof(string));
             this.Date = (DateTime)info.GetValue("Date", typeof(DateTime));
             this.Seen = (bool)info.GetValue("Seen", typeof(bool));
+            this.ContentRTF = (string)info.GetValue("ContentRTF", typeof(string));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

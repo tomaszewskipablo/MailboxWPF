@@ -37,14 +37,18 @@ namespace mailboxWPF
 
 
         public ObservableCollection<Mail> currentFolderPointer;
-        public Mailbox currentUserPtr;
-
+        public Mailbox currentUserPtr;       
         
 
         public MainWindow()
         {
             InitializeComponent();
             mailBoxes = new ObservableCollection<Mailbox>();
+            Mailbox m = new Mailbox("pawel@o2.pl");
+            mailBoxes.Add(m);
+            Mail mail = new Mail("Very important email", "tomaszewski@gmail.com", "pawel@o2.pl", "content");
+            mailBoxes[0].inbox.Add(mail);
+            CreateTreeViewFromMailBox();
         }
         private void CreateTreeViewFromMailBox()
         {
@@ -158,7 +162,11 @@ namespace mailboxWPF
             sendMessageWindow.subject.Text = currentFolderPointer[selectedMail].Topic;
             sendMessageWindow.author.Text = currentFolderPointer[selectedMail].Author;
             sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
-            sendMessageWindow.content.Content.AppendText(currentFolderPointer[selectedMail].Content);
+
+
+            
+
+            //sendMessageWindow.content.Content.AppendText(currentFolderPointer[selectedMail].ContentRTF);
 
             for (int i = 0; i < currentFolderPointer[selectedMail].attachments.Count; i++)
             {
@@ -333,8 +341,6 @@ namespace mailboxWPF
 
             if (openFileDialog.ShowDialog() == true)
             {
-
-
                 XmlSerializer desrializer = new XmlSerializer(typeof(ObservableCollection<Mailbox>));
 
                 string path = openFileDialog.FileName;
@@ -359,11 +365,11 @@ namespace mailboxWPF
             {
                 string path = openFileDialog.FileName;
 
-                XmlSerializer serialier = new XmlSerializer(typeof(List<Mailbox>));
+                XmlSerializer serialier = new XmlSerializer(typeof(ObservableCollection<Mailbox>));
 
                 using (Stream tw = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Mailbox>));
+                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Mailbox>));
                     serializer.Serialize(tw, mailBoxes);
                 }
             }

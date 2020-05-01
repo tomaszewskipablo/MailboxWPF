@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace mailboxWPF
         public Editor()
         {
             InitializeComponent();
-            AddFontsSizeTofontSizeCombobox();
+            AddFontsSizeTofontSizeCombobox();            
         }
         private void AddFontsSizeTofontSizeCombobox()
         {
@@ -111,6 +112,17 @@ namespace mailboxWPF
                     Content.Selection.ApplyPropertyValue(RichTextBox.ForegroundProperty, brushConverter.ConvertFrom(colorToSet));
                 }
             }
+        }
+        public string save()
+        {
+            string rtfText; //string to save to db
+            TextRange tr = new TextRange(Content.Document.ContentStart, Content.Document.ContentEnd);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                tr.Save(ms, DataFormats.Rtf);
+                rtfText = Encoding.ASCII.GetString(ms.ToArray());
+            }
+            return rtfText;
         }
     }
 }

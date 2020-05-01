@@ -109,6 +109,7 @@
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <EventSetter Event="MouseLeftButtonUp" Handler="MailInListView_MouseLeftButtonUp" />
+                        <EventSetter Event="MouseDoubleClick" Handler="Item_MouseDoubleClick" />
                     </Style>
                 </ListView.ItemContainerStyle>
                 <!--for addding event for every item in listView-->
