@@ -72,5 +72,27 @@ namespace mailboxWPF
                 Content.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Normal);
             }
         }
+        private void incline_Click(object sender, RoutedEventArgs e)
+        {
+            if (Content.Selection.GetPropertyValue(RichTextBox.FontStyleProperty).Equals(FontStyles.Normal))
+            {
+                Content.Selection.ApplyPropertyValue(RichTextBox.FontStyleProperty, FontStyles.Italic);
+            }
+            else
+            {
+                Content.Selection.ApplyPropertyValue(RichTextBox.FontStyleProperty, FontStyles.Normal);
+            }
+        }
+        private void underline_Click(object sender, RoutedEventArgs e)
+        {
+            if (Content.Selection.GetPropertyValue(Run.TextDecorationsProperty).Equals(TextDecorations.Underline))
+            {
+                Content.Selection.ApplyPropertyValue(Underline.TextDecorationsProperty, null);
+            }
+            else
+            {
+                Content.Selection.ApplyPropertyValue(Underline.TextDecorationsProperty, TextDecorations.Underline);
+            }
+        }
     }
 }
