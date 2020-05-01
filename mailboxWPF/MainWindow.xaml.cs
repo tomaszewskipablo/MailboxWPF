@@ -261,6 +261,7 @@ namespace mailboxWPF
 
                     int selectedMail = this.listView.SelectedIndex;
                     sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Author;
+                    DecodeRFT(sendMessageWindow, selectedMail);
 
                     if (sendMessageWindow.ShowDialog() == true)
                     {
