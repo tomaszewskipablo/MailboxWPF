@@ -391,7 +391,18 @@ namespace mailboxWPF
             // display mail in mail preview (right side)
             emailSubject.Content = currentFolderPointer[listView.SelectedIndex].Topic;
             emailAdress.Content = currentFolderPointer[listView.SelectedIndex].Author;
-            emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
+
+            string rtfText = currentFolderPointer[listView.SelectedIndex].ContentRTF;
+            byte[] byteArray = Encoding.ASCII.GetBytes(rtfText);
+            using (MemoryStream ms = new MemoryStream(byteArray))
+            {
+                
+   TextRange tr = new TextRange(emailContent.content.Document.ContentStart, emailContent.content.Document.ContentEnd);
+                tr.Load(ms, DataFormats.Rtf);
+            }
+            //this.emailContent.Content.AppendText(currentFolderPointer[selectedMail].Content);
+            // emailContent.Text.Content.AppendText(currentFolderPointer[selectedMail].Content);
+            //emailContent.Text = currentFolderPointer[listView.SelectedIndex].Content;
         }
     }
 }

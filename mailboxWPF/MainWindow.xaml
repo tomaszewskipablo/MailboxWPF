@@ -104,7 +104,7 @@
 
 
             <ListView Grid.Row="1" x:Name="listView" Margin="15,30.2,0.8,0" Grid.RowSpan="3" Grid.ColumnSpan="3">
-               
+
                 <!--for addding event for every item in listView-->
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -132,7 +132,7 @@
                             <TextBlock Grid.Row="2" Text="{Binding Date}"/>
                         </Grid>
                         <!--BINDING-->
-                        
+
                         <!--for marking seen messages-->
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding Seen}" Value="True">
@@ -140,7 +140,7 @@
                             </DataTrigger>
                         </DataTemplate.Triggers>
                         <!--for marking seen messages-->
-                        
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -153,15 +153,9 @@
                 </TreeView>
             </StackPanel>
 
-
-
             <Label x:Name="emailSubject" Grid.Row="1" Grid.Column="4" Margin="17.2,0.2,14.6,1.2" Background="#FFA0E7CE"></Label>
             <Label x:Name="emailAdress" Grid.Row="1" Grid.Column="4" Margin="17.2,30.2,14.6,1.2" Background="#FFA0E7CE" Grid.RowSpan="2"></Label>
-            <TextBlock x:Name="emailContent" Background="#FFFFFF" Grid.Row="3" Grid.Column="4" Margin="17.6,6.2,13.2,12.4" TextWrapping="Wrap" UseLayoutRounding="False" Grid.RowSpan="2"  />
-
-
-
-
+            <local:MessageViewer x:Name="emailContent" Grid.Row="3" Grid.Column="4" ></local:MessageViewer>
 
         </Grid>
     </Grid>
