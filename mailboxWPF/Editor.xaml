@@ -49,8 +49,8 @@
                     
 
                     <StackPanel Orientation="Vertical" Grid.Column="1" Margin="15,0,0,0.2">
-                        <Button Content="Clear formating"  HorizontalAlignment="center" VerticalAlignment="Center" Width="98"  Height="auto" Margin="18.8,10,18.6,9.6"/>
-                        <xctk1:ColorPicker Name="ColorPicker1" Height="auto" DisplayColorAndName="True"  Width="auto"  SelectedColor="#FF090909" RenderTransformOrigin="7.2,-0.512" />
+                        <Button Content="Clear formating"  HorizontalAlignment="center" VerticalAlignment="Center" Width="98"  Height="auto" Margin="18.8,10,18.6,9.6" Click="clear_Click"/>
+                        <xctk1:ColorPicker Name="ColorPicker" Height="auto" DisplayColorAndName="True"  Width="auto"  SelectedColor="#FF090909" RenderTransformOrigin="7.2,-0.512" SelectedColorChanged="ColorPicker_SelectedColorChanged"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

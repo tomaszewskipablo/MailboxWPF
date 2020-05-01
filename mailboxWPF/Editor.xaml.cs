@@ -94,5 +94,23 @@ namespace mailboxWPF
                 Content.Selection.ApplyPropertyValue(Underline.TextDecorationsProperty, TextDecorations.Underline);
             }
         }
+        private void clear_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Selection.ClearAllProperties();
+        }
+
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (Content != null)
+            {
+                if (ColorPicker.SelectedColor.HasValue)
+                {
+                    BrushConverter brushConverter = new BrushConverter();
+                    string colorToSet = ColorPicker.SelectedColor.ToString();
+                    
+                    Content.Selection.ApplyPropertyValue(RichTextBox.ForegroundProperty, brushConverter.ConvertFrom(colorToSet));
+                }
+            }
+        }
     }
 }
