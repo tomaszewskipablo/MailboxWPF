@@ -163,8 +163,7 @@ namespace mailboxWPF
             sendMessageWindow.author.Text = currentFolderPointer[selectedMail].Author;
             sendMessageWindow.recipient.Text = currentFolderPointer[selectedMail].Receiver;
 
-
-            
+            DecodeRFT(sendMessageWindow, selectedMail);    
 
             //sendMessageWindow.content.Content.AppendText(currentFolderPointer[selectedMail].ContentRTF);
 
@@ -187,8 +186,16 @@ namespace mailboxWPF
                 // text = dw.textbox.Text;
             }
         }
-
-
+        private void DecodeRFT(SendMessageWindow sendMessageWindow, int selectedMail)
+        {
+            string rtfText = currentFolderPointer[selectedMail].ContentRTF;
+            byte[] byteArray = Encoding.ASCII.GetBytes(rtfText);
+            using (MemoryStream ms = new MemoryStream(byteArray))
+            {
+                TextRange tr = new TextRange(sendMessageWindow.content.Content.Document.ContentStart, sendMessageWindow.content.Content.Document.ContentEnd);
+                tr.Load(ms, DataFormats.Rtf);
+            }
+        }
 
         public void deleteEmail(int i)
         {
