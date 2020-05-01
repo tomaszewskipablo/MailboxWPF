@@ -79,7 +79,9 @@ namespace mailboxWPF
                             m.inbox.Add(mail);
                         }
                     }
-                    this.Close();
+
+                    BusyIndicator.IsBusy = true;
+                    TheEnclosingMethod();
                 }
                 else
                 {
@@ -87,7 +89,12 @@ namespace mailboxWPF
                 }
             }
         }
-
+        public async void TheEnclosingMethod()
+        {
+            await Task.Delay(2000);
+            BusyIndicator.IsBusy = false;
+            this.Close();
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
